@@ -16,7 +16,6 @@ namespace ObjectTestScaleFeature
         [SerializeField] private Transform detectDisplay;
 
         public Action MarkingGroundEvent;
-        public Action<Transform> StopMarkingGroundEvent;
         private static event Action UpdateEvent;
 
         private void Awake()
@@ -26,19 +25,12 @@ namespace ObjectTestScaleFeature
 
         public void StartDetect(PlaneDetectionMode mode)
         {
+            //detectDisplay.GetComponent<ARObjectControl>()
             aRPlaneManager.requestedDetectionMode = mode;
             detectDisplay.gameObject.SetActive(true);
             aRPlaneManager.enabled = true;
             MarkingGroundEvent?.Invoke();
             UpdateEvent += MarkGround;
-        }
-        
-        public void StopDetect()
-        {
-            aRPlaneManager.enabled = false;
-            detectDisplay.gameObject.SetActive(false);
-            StopMarkingGroundEvent?.Invoke(detectDisplay.transform);
-            UpdateEvent -= MarkGround;
         }
 
         public void Update()

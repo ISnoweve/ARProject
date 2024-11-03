@@ -19,8 +19,7 @@ namespace ObjectTestScaleFeature
 
         private void Start()
         {
-            ArPlaneCtr.Instance.StopMarkingGroundEvent += DisplayARObject;
-            ArPlaneCtr.Instance.MarkingGroundEvent += UnDisplayARObject;
+            ArPlaneCtr.Instance.MarkingGroundEvent += DisplayARObject;
         }
 
         public void ChangeScale()
@@ -36,20 +35,11 @@ namespace ObjectTestScaleFeature
             scaleText.text = $"Scale: {_objectTransform.localScale.x}";
         }
 
-        private void DisplayARObject(Transform objTransform)
+        private void DisplayARObject()
         {
-            _objectTransform.gameObject.SetActive(true);
-            _objectTransform.position = objTransform.position;
-            _objectTransform.rotation = objTransform.rotation;
+            transform.gameObject.SetActive(true);
             scrollbarForScale.gameObject.SetActive(true);
             scaleText.transform.gameObject.SetActive(true);
-        }
-
-        private void UnDisplayARObject()
-        {
-            _objectTransform.gameObject.SetActive(false);
-            scrollbarForScale.gameObject.SetActive(false);
-            scaleText.transform.gameObject.SetActive(false);
         }
     }
 }
