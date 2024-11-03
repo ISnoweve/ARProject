@@ -15,11 +15,6 @@ namespace ObjectTestScaleFeature
             {
                 ArPlaneCtr.Instance.StartDetect(PlaneDetectionMode.Horizontal);
             });
-            
-            stopMarkingGroundButton.onClick.AddListener(() =>
-            {
-                ArPlaneCtr.Instance.StopDetect();
-            });
         }
     }
 }
