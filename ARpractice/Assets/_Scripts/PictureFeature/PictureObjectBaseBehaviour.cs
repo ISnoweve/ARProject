@@ -13,11 +13,16 @@ namespace PictureFeature
             Debug.Log(Quaternion.Inverse(camera.transform.rotation)*transform.rotation);
         }
         
-        public void RestoreRelativeTransform(Vector3 relativePosition, Quaternion rotation)
+        public void RestoreRelativeTransform(Vector3 relativePosition, Quaternion rotation, bool isRayHit = false, float rayLength = 0f)
         {
             Camera camera = Camera.main;
             transform.position = camera.transform.rotation * relativePosition + camera.transform.position;
             transform.rotation = camera.transform.rotation * rotation;
+
+            if (!isRayHit) return;
+            var scaleRatio = Mathf.Clamp01(rayLength / relativePosition.magnitude);
+            transform.position = Vector3.Lerp(camera.transform.position, transform.position, scaleRatio);
+            transform.localScale *= scaleRatio;
         }
         
         public void OnClick()

@@ -1,7 +1,10 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using PictureFeature.Data;
 using PictureFeature.Interface;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 namespace PictureFeature
 {
@@ -16,6 +19,11 @@ namespace PictureFeature
         public int imageHeight = 1080;
         public string saveName = "CapturedImage.png";
         public int detectionRadius;
+
+        [Header("Testing")]
+        [SerializeField] private bool enableDistanceScale = false;
+        private ARRaycastManager raycastManager;
+        private Toggle enableDistanceScaleToggle;
         
         private void Awake()
         {
@@ -25,6 +33,12 @@ namespace PictureFeature
             pictureTransparency.gameObject.SetActive(false);
             pictureBehaviour.Initialize();
             //pictureBehaviour.OnSpawn(pictureScriptableObjectList.pictureScriptableObjects[0]);
+
+            raycastManager = FindObjectOfType<ARRaycastManager>();
+            enableDistanceScaleToggle = FindObjectOfType<Toggle>();
+
+            enableDistanceScaleToggle.isOn = enableDistanceScale;
+            enableDistanceScaleToggle.onValueChanged.AddListener(ToggleDistanceScale);
         }
         
         private void Update()
@@ -86,6 +100,13 @@ namespace PictureFeature
         {
             Debug.Log("Generate Picture Object");
 
+            List<ARRaycastHit> hitResults = new();
+            bool isRayHit = enableDistanceScale && raycastManager.Raycast(new Vector2(Screen.width / 2f, Screen.height / 2f), hitResults);
+            float rayLength = 0f;
+
+            if (isRayHit)
+                rayLength = hitResults[0].distance;
+
             foreach (var VARIABLE in pictureScriptableObjectList.pictureScriptableObjects)
             {
                 if (VARIABLE.pictureSprite == sprite)
@@ -95,7 +116,7 @@ namespace PictureFeature
                     {
                         var camera = Camera.main;
                         var pictureObject = Instantiate(variable.pictureObject, default, variable.rotation,transform);
-                        pictureObject.GetComponent<PictureObjectBaseBehaviour>().RestoreRelativeTransform(variable.cameraPictureRelativePosition, variable.rotation);
+                        pictureObject.GetComponent<PictureObjectBaseBehaviour>().RestoreRelativeTransform(variable.cameraPictureRelativePosition, variable.rotation, isRayHit, rayLength);
                     }
                 }
             }
@@ -112,6 +133,11 @@ namespace PictureFeature
         {
             pictureTransparency.gameObject.SetActive(false);
             pictureBehaviour.DeSpawn();
+        }
+
+        public void ToggleDistanceScale(bool value)
+        {
+            enableDistanceScale = value;
         }
     }
 }
