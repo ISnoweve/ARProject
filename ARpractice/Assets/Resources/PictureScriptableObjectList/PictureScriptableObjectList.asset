@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PictureScriptableObjectList
   m_EditorClassIdentifier: 
   pictureScriptableObjects:
-  - {fileID: 11400000, guid: 7c7ff509ff5c447449c7af2df77611db, type: 2}
+  - {fileID: 11400000, guid: a62c8743233da1e4e847bac29a2635da, type: 2}
+  - {fileID: 11400000, guid: 1a481f8e41ff17c4a92dd17152790123, type: 2}

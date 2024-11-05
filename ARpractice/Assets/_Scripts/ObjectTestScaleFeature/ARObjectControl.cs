@@ -7,36 +7,37 @@ namespace ObjectTestScaleFeature
     {
         public Scrollbar scrollbarForScale;
         public Text scaleText;
-        private Transform _objectTransform;
+        public Transform _objectTransform;
         private Vector3 _originalScale;
-        
+        public float mutiplier = 2;
 
         private void Awake()
         {
-            _objectTransform = GetComponent<Transform>();
+            _objectTransform = ArPlaneCtr.Instance.detectDisplay.transform;
             _originalScale = _objectTransform.localScale;
         }
 
         private void Start()
         {
             ArPlaneCtr.Instance.MarkingGroundEvent += DisplayARObject;
+
         }
 
         public void ChangeScale()
         {
             if(scrollbarForScale.value<=0.01)
                 scrollbarForScale.value = 0.01f;
-            
-            _objectTransform.localScale = new Vector3(
-                _originalScale.x*scrollbarForScale.value, 
-                _originalScale.y*scrollbarForScale.value, 
-                _originalScale.z*scrollbarForScale.value);
-                
+
+            float fector = scrollbarForScale.value * mutiplier;
+            _objectTransform.localScale = _originalScale* fector;
+
+
             scaleText.text = $"Scale: {_objectTransform.localScale.x}";
         }
 
         private void DisplayARObject()
         {
+            scrollbarForScale.value = 0.5f;
             transform.gameObject.SetActive(true);
             scrollbarForScale.gameObject.SetActive(true);
             scaleText.transform.gameObject.SetActive(true);

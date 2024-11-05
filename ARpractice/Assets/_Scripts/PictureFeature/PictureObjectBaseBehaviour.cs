@@ -6,11 +6,20 @@ namespace PictureFeature
 {
     public class PictureObjectBaseBehaviour : MonoBehaviour,IPicture, IClickable
     {
-        public void OnTakePhoto()
+        public GameObject prefabGameObject;
+
+        public GameObject GetPrefabGameObject()
+        {
+            return prefabGameObject;
+        }
+
+        public void OnTakePhoto(ref Vector3 relativelyPos, ref Quaternion relativelyRot)
         {
             var camera = Camera.main;
-            Debug.Log($"Camera{Quaternion.Inverse(camera.transform.rotation)*(transform.position - camera.transform.position)}");
-            Debug.Log(Quaternion.Inverse(camera.transform.rotation)*transform.rotation);
+            relativelyPos = Quaternion.Inverse(camera.transform.rotation) * (transform.position - camera.transform.position);
+            Debug.Log($"Camera{relativelyPos}");
+            relativelyRot= Quaternion.Inverse(camera.transform.rotation) * transform.rotation;
+            Debug.Log(relativelyRot);
         }
         
         public void RestoreRelativeTransform(Vector3 relativePosition, Quaternion rotation)

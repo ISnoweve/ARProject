@@ -2,6 +2,10 @@
 using PictureFeature.Data;
 using PictureFeature.Interface;
 using UnityEngine;
+using UnityEditor;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace PictureFeature
 {
@@ -16,7 +20,10 @@ namespace PictureFeature
         public int imageHeight = 1080;
         public string saveName = "CapturedImage.png";
         public int detectionRadius;
-        
+        private Vector3 relativelyPos;
+        private Quaternion relativelyRot;
+        private int nowPhotoIndex;
+        private List<GameObject> spawnedObjects=new List<GameObject>();
         private void Awake()
         {
             Instance = this;
@@ -29,20 +36,29 @@ namespace PictureFeature
         
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Keypad0))
             {
-                CaptureImage();
+                CaptureImage(0);
             }
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                CaptureImage(1);
+            }
+         
+
+
+
         }
-        
+
         #region TakePhotoFeature
-        public void CaptureImage()
+        public void CaptureImage(int slot)
         {            
             _cameraToCapture = Camera.main;
-            var savePath = Path.Combine(Application.streamingAssetsPath, saveName);
+            var savePath = Path.Combine(Application.streamingAssetsPath, slot+saveName);
 
             //對整個相機內的畫面進行掃描，檢測是否有實現 IPicture 接口的物體
-            DetectObjectsInView();
+            
+            DetectObjectsInView(slot);
             // 創建 Render Texture
             RenderTexture renderTexture = new RenderTexture(imageWidth, imageHeight, 24);
             _cameraToCapture.targetTexture = renderTexture;
@@ -66,18 +82,30 @@ namespace PictureFeature
             Debug.Log("Image saved to " + savePath);
         }
 
-        private void DetectObjectsInView()
+        private void DetectObjectsInView(int slot)
         {
             Collider[] hitColliders = Physics.OverlapSphere(_cameraToCapture.transform.position, detectionRadius);
+            int index = 0;
+            List<InPictureObject> _objs = new(); 
             foreach (var hitCollider in hitColliders)
             {
+
                 IPicture pictureComponent = hitCollider.GetComponent<IPicture>();
                 if (pictureComponent != null)
                 {
+                    InPictureObject obj = new InPictureObject();
                     Debug.Log("Detected " + hitCollider.name + " objects in view");
-                    pictureComponent.OnTakePhoto();
+                    pictureComponent.OnTakePhoto(ref relativelyPos, ref relativelyRot);
+
+                    obj.cameraPictureRelativePosition = relativelyPos;
+                    obj.rotation = relativelyRot;   
+                    Debug.Log(hitCollider.transform.gameObject.GetType());
+                    obj.pictureObject = pictureComponent.GetPrefabGameObject();
+                    _objs.Add(obj);
                 }
+                index++;               
             }
+            pictureScriptableObjectList.pictureScriptableObjects[slot].inPictureObjects = _objs.ToArray();
         }
 
         #endregion
@@ -96,22 +124,38 @@ namespace PictureFeature
                         var camera = Camera.main;
                         var pictureObject = Instantiate(variable.pictureObject, default, variable.rotation,transform);
                         pictureObject.GetComponent<PictureObjectBaseBehaviour>().RestoreRelativeTransform(variable.cameraPictureRelativePosition, variable.rotation);
+                        spawnedObjects.Add(pictureObject);
                     }
                 }
             }
+
             
         }
 
-        public void SpawnPicture(PictureScriptableObject pictureScriptableObject)
+        public void SpawnPicture()
         {
             pictureTransparency.gameObject.SetActive(true);
-            pictureBehaviour.OnSpawn(pictureScriptableObject);
+            pictureBehaviour.OnSpawn(pictureScriptableObjectList.pictureScriptableObjects[nowPhotoIndex]);
+            nowPhotoIndex= (nowPhotoIndex+1)% pictureScriptableObjectList.pictureScriptableObjects.Length;
+
         }
-        
+
         public void CallBackPicture()
         {
             pictureTransparency.gameObject.SetActive(false);
             pictureBehaviour.DeSpawn();
+        }
+
+
+        public void ClearAll ()
+        {
+            foreach(var obj in spawnedObjects)
+            {
+                Destroy(obj);
+            }
+            spawnedObjects.Clear();
+
+
         }
     }
 }

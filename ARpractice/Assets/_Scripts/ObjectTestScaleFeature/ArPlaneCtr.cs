@@ -6,6 +6,7 @@ using UnityEngine.XR.ARSubsystems;
 
 namespace ObjectTestScaleFeature
 {
+    [DefaultExecutionOrder(-2)]
     public class ArPlaneCtr : MonoBehaviour
     {
         public static ArPlaneCtr Instance;
@@ -13,7 +14,7 @@ namespace ObjectTestScaleFeature
         [SerializeField] private ARPlaneManager aRPlaneManager;
         [SerializeField] private ARRaycastManager aRRaycastManager;
         
-        [SerializeField] private Transform detectDisplay;
+        [SerializeField] internal Transform detectDisplay;
 
         public Action MarkingGroundEvent;
         private static event Action UpdateEvent;
@@ -31,6 +32,13 @@ namespace ObjectTestScaleFeature
             aRPlaneManager.enabled = true;
             MarkingGroundEvent?.Invoke();
             UpdateEvent += MarkGround;
+        }
+
+        public void StopDetect()
+        {
+            //detectDisplay.GetComponent<ARObjectControl>()
+
+            UpdateEvent -= MarkGround;
         }
 
         public void Update()
