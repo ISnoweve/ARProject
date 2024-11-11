@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Ho/Scene/Menu.unity
-    guid: 3e4e65f692a1ad44d80a82e0acaaa3b0
-  - enabled: 1
-    path: Assets/Ho/Scene/PlaceBox.unity
-    guid: 4bb52a91e4fdfd24290712f4ecf6bd39
-  - enabled: 1
-    path: Assets/Ho/Scene/PictureScene 1.unity
-    guid: 2072165a1f87ff64aba0128c1cda4ccc
-  - enabled: 1
-    path: Assets/_Scenes/ARAnchorTest.unity
-    guid: e484218e50c2c51438d13c1658758704
+    path: Assets/_Scenes/TestScene.unity
+    guid: ed2e5c0dd13650942a4c0fa4c4941e93
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: fb79c8a21e3282e4a92a51ce7356f063, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 5636df1b72005cb4eb50a4fc2e41cf39, type: 2}
