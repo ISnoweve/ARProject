@@ -1,31 +1,39 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationSystem : MonoBehaviour
 {
-    public Animator animator;
-    public Action<string> OnAnimationEnd;
+    public static AnimationSystem Instance { get; private set; }
+    public Dictionary<string,Animator> AnimationDictionary = new Dictionary<string, Animator>();
+
+    public Action<string,string> OnAnimationEnd;
 
     private void Awake()
     {
-        // switch to register dialogSystem action 
-        OnAnimationEnd += PlayAnimation;
-        
-        PlayFirstAnimation();
+        Instance = this;
     }
 
-    public void PlayFirstAnimation()
+    public void RegisterDictionary(string id, Animator animator)
     {
-        PlayAnimation("ABC");
+        AnimationDictionary.Add(id, animator);
     }
 
-    private void PlayAnimation(string animationName)
+    public void UnRegisterDictionary(string id)
     {
-        animator.SetTrigger(animationName);
+        AnimationDictionary.Remove(id);
     }
 
-    public void AnimationEnd(string animationName)
+    public void PlayAnimation(string id, string animationName)
     {
-        OnAnimationEnd?.Invoke(animationName);
+        if (AnimationDictionary.ContainsKey(id))
+        {
+            AnimationDictionary[id].SetTrigger(animationName);
+        }
+    }
+
+    public void AnimationEnd(string id, string animationName)
+    {
+        OnAnimationEnd?.Invoke(id, animationName);
     }
 }
