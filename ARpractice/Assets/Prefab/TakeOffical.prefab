@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 7696724577183042044, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e35e76b11ae9d443a5e820acbc4c11b, type: 2}
     - target: {fileID: 8813284055086283490, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.96
