@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 312798698618953876, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c9a2d56795435b4d9edc63e8955fef2, type: 2}
     - target: {fileID: 919132149155446097, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
       propertyPath: m_Name
       value: door_sphere
@@ -95,6 +99,34 @@ PrefabInstance:
     - target: {fileID: 8813284055086283490, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 187.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 187.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 187.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000107344292248105, guid: da4ae2c46f065cc45bc4b88b24d8c2e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
