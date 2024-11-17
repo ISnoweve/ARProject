@@ -1,20 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ARObjectSpawnSystem : MonoBehaviour
 {
     public static ARObjectSpawnSystem Instance { get; private set; }
-    
+    public Dictionary<string, ARObjectBehaviour> ARObjectDictionary;
+
     public Action<ARObjectBehaviour> OnSpawn;
 
-    public void SpawnObject(ARObjectBehaviour arObjectBehaviour)
+    private void Awake()
     {
-        GameObject arObject = Instantiate(arObjectBehaviour.gameObject);
-        arObjectBehaviour.OnSpawn();
-        OnSpawn?.Invoke(arObjectBehaviour);
+        Instance = this;
+        ARObjectDictionary = new Dictionary<string, ARObjectBehaviour>();
     }
-    
-    public void DeSpawnObject(ARObjectBehaviour arObjectBehaviour)
+
+    public void SpawnObject(ARObjectBehaviour arObjectBehaviour)
     {
         arObjectBehaviour.OnSpawn();
         OnSpawn?.Invoke(arObjectBehaviour);
