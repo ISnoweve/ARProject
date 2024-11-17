@@ -10,6 +10,11 @@ public class DialogBoxCtr : MonoBehaviour
     public TMP_Text dialog;
     private bool shown = false;
 
+    private void Start()
+    {
+        cg.alpha = 0;
+    }
+
     internal void ShowDialog(string text)
     {
         dialog.text = text;
