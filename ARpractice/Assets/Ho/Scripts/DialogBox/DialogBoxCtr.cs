@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DialogBoxCtr : MonoBehaviour
 {
-    public string charaTerID;
+    public string charaterID;
     public CanvasGroup cg;
     public TMP_Text dialog;
     private bool shown = false;
@@ -18,7 +18,7 @@ public class DialogBoxCtr : MonoBehaviour
         shown = true;
         LeanTween.value(0, 1, 1).setOnUpdate((float val) => cg.alpha = val);
     }
-    internal void HideDialog(string text)
+    internal void HideDialog()
     {
         if (!shown)
             return;
