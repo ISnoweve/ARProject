@@ -17,9 +17,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/ARAnchorTest.unity
     guid: e484218e50c2c51438d13c1658758704
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ho/Scene/Test2.unity
     guid: 4db7f2b471415b94cb3e76718ffd8cc4
+  - enabled: 1
+    path: Assets/_Scenes/TestScene.unity
+    guid: ed2e5c0dd13650942a4c0fa4c4941e93
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: fb79c8a21e3282e4a92a51ce7356f063, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 5636df1b72005cb4eb50a4fc2e41cf39, type: 2}

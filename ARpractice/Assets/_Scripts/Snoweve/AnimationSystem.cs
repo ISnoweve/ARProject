@@ -32,8 +32,9 @@ public class AnimationSystem : MonoBehaviour
         }
     }
 
-    public void AnimationEnd(string id, string animationName)
+    public void CallAnimationEnd(string id, string animationName)
     {
+        Debug.Log(id + " " + animationName);
         OnAnimationEnd?.Invoke(id, animationName);
     }
 }

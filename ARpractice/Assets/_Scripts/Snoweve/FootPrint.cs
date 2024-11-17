@@ -1,19 +1,20 @@
-﻿
-public class SmallBrick : ARObjectBehaviour
+﻿using UnityEngine;
+
+public class FootPrint : ARObjectBehaviour
 {
     
     public override void OnSpawn()
     {
+        gameObject.SetActive(true);
         RegisterSystem();
         RegisterEvent();
-        AnimationSystem.Instance.PlayAnimation(id, "Idle");
     }
 
     public override void OnDeSpawn()
     {
         UnRegisterSystem();
         UnRegisterEvent();
-        ARObjectSpawnSystem.Instance.DeSpawnObject(this);
+        gameObject.SetActive(false);
     }
 
     public override void RegisterSystem()
@@ -28,30 +29,24 @@ public class SmallBrick : ARObjectBehaviour
 
     public override void RegisterEvent()
     {
+        AnimationSystem.Instance.OnAnimationEnd += DestroyFootPrint;
     }
 
     public override void UnRegisterEvent()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnAnimation(string animationName)
-    {
-        
-    }
-    
-    public override void OnDialog(string dialogId)
-    {
-        
-    }
-    
-    public override void OnVoice(string voiceId)
-    {
-        
+        AnimationSystem.Instance.OnAnimationEnd -= DestroyFootPrint;
     }
 
     public override void OnAnimationEnd(string animationName)
     {
-        AnimationSystem.Instance.AnimationEnd(id, animationName);
+        throw new System.NotImplementedException();
+    }
+    
+    private void DestroyFootPrint(string id, string animationName)
+    {
+        if (id == "LittleWell" && animationName == "Spawn")
+        {
+            OnDeSpawn();
+        }
     }
 }

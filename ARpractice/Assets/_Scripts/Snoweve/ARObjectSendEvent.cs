@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ARObjectSendEvent : MonoBehaviour
 {
-    public GameObject arObject;
-    private void Awake()
+    private void Start()
     {
-        ARObjectSpawnSystem.Instance.SpawnObject(arObject.GetComponent<ARObjectBehaviour>());
+
+    }
+    
+    private void OnEnable()
+    {
+        ARObjectSpawnSystem.Instance.SpawnObject(ARObjectSpawnSystem.Instance.ARObjectDictionary["FootPrint"]);
+        ARObjectSpawnSystem.Instance.SpawnObject(ARObjectSpawnSystem.Instance.ARObjectDictionary["LittleWell"]);
     }
 }
