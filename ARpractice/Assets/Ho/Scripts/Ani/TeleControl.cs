@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class TeleControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+   public Animator paperAni;
+    public Material protalMaterial;
+    public void PortalApper()
     {
-        
+        paperAni.Play("PaperApper");
+        protalMaterial.SetFloat("_DissolveAmount", 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PortalDisolveIn()
     {
-        
+        LeanTween.value(1, 0, 1).setOnUpdate((float value) =>
+        {
+            protalMaterial.SetFloat("_DissolveAmount", value);
+        });
     }
+
+    public void PortalDisapper()
+    {
+
+    }
+
+    public void PortalDisolveOut()
+    {
+        LeanTween.value(0, 1, 1).setOnUpdate((float value) =>
+        {
+            protalMaterial.SetFloat("_DissolveAmount", value);
+        });
+    }
+
+  
 }

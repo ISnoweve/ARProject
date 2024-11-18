@@ -6,7 +6,7 @@ using UnityEngine;
 public class ARObjectAllStuff : MonoBehaviour
 {
     public Animator animator;
-    public Material teleport;
+
 
     public float eventTimeOne;
     public float eventTimeTwo;
@@ -18,12 +18,15 @@ public class ARObjectAllStuff : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        gameObject.SetActive(false);
+        
+        // gameObject.SetActive(false);
     }
 
+
+    [ContextMenu("Onspawn")]
     public void OnSpawn()
     {
-        gameObject.SetActive(true);
+      //  gameObject.SetActive(true);
         PlayAnimation("Spawn");
     }
 
@@ -34,6 +37,7 @@ public class ARObjectAllStuff : MonoBehaviour
 
     public void OnAnimationEnd(string animationName)
     {
+
         if (animationName == "Spawn")
         {
             StartCoroutine(PlayAnimationDialogOne());
@@ -68,10 +72,7 @@ public class ARObjectAllStuff : MonoBehaviour
     // LittleWell up hand animation and DialogOne talk
     public IEnumerator PlayAnimationDialogOne()
     {
-        LeanTween.value(1,0,1).setOnUpdate((float value) =>
-        {
-            teleport.SetFloat("_DissolveAmount", value);
-        });
+      
         yield return new WaitForSeconds(eventTimeOne);
         OnAnimationEnd("DialogOne");
     }
@@ -80,6 +81,7 @@ public class ARObjectAllStuff : MonoBehaviour
     public IEnumerator PlayAnimationDialogTwo()
     {
         //LittleWell talk something
+     
         PlayAnimation("OfficeComeIn");
         yield return new WaitForSeconds(eventTimeTwo);
         OnAnimationEnd("DialogTwo");
@@ -99,10 +101,10 @@ public class ARObjectAllStuff : MonoBehaviour
         //LittleWell last talk
         Debug.LogError("LittleWell last talk");
         yield return new WaitForSeconds(eventTimeFour);
-        LeanTween.value(0,1,1).setOnUpdate((float value) =>
-        {
-            teleport.SetFloat("_DissolveAmount", value);
-        });
+        //LeanTween.value(0,1,1).setOnUpdate((float value) =>
+        //{
+        //    teleport.SetFloat("_DissolveAmount", value);
+        //});
         yield return new WaitForSeconds(eventTimeFour);
         OnAnimationEnd("End");
     }

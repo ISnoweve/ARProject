@@ -114,11 +114,11 @@ Material:
     - _CastShadows: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cull: 2
+    - _Cull: 1
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 1
+    - _DissolveAmount: 0
     - _DissolveScale: 183.82
     - _DissolveWidth: 0.02
     - _DstBlend: 0
@@ -139,7 +139,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _StencilID: 5
+    - _StencilID: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZTest: 4

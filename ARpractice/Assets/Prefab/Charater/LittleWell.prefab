@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759530931080277809}
+  - component: {fileID: 3254037111625278716}
   m_Layer: 0
   m_Name: LittleWell
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 2614014450229565897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3254037111625278716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073955605933203215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b695ce37a02cc54381deea742d315c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterMateral: {fileID: 2100000, guid: 200cf40529bba7242a4ce9fba40fd8e9, type: 2}
+  wellMateral: {fileID: 2100000, guid: cccb3a2941709294b88d6691ebbb69ea, type: 2}
 --- !u!1001 &2579543577727516194
 PrefabInstance:
   m_ObjectHideFlags: 0

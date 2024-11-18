@@ -242,6 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3832283671119436788}
+  - component: {fileID: 7602009738018445241}
   m_Layer: 0
   m_Name: footprint
   m_TagString: Untagged
@@ -266,3 +267,16 @@ Transform:
   - {fileID: 6644087876447661995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7602009738018445241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837975003986699113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e956a6f54bfc3e49a8402fb5e6cac40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footVFX: {fileID: 4155276617911023546}
