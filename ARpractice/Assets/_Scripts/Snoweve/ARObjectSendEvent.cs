@@ -6,6 +6,6 @@ public class ARObjectSendEvent : MonoBehaviour
 {
     private void OnEnable()
     {
-        ARObjectSpawnSystem.Instance.SpawnObject();
+       // ARObjectSpawnSystem.Instance.SpawnObject();
     }
 }

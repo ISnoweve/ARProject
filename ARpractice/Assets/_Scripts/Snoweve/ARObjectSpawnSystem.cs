@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class ARObjectSpawnSystem : MonoBehaviour
 {
-    public static ARObjectSpawnSystem Instance { get; private set; }
+    //public static ARObjectSpawnSystem Instance { get; private set; }
     public ARObjectAllStuff arObjectPrefab;
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    Instance = this;
+    //}
+    private void Start()
     {
-        Instance = this;
+        SpawnObject();
+
     }
 
     public void SpawnObject()
@@ -17,3 +22,11 @@ public class ARObjectSpawnSystem : MonoBehaviour
         arObjectPrefab.OnSpawn();
     }
 }
+
+
+// onImage
+// {
+// Gamepbj = imstttttt();
+// Gamepbj.Get<ARObjectSpawnSystem>().SpawnObject();
+
+//}
