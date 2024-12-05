@@ -7,6 +7,9 @@ public class ARObjectAllStuff : MonoBehaviour
 {
     public Animator animator;
     public Material teleport;
+    public LittleWell littleWell;
+    public Office office;
+    public LocalOffice localOffice;
 
     public float eventTimeOne;
     public float eventTimeTwo;
@@ -19,17 +22,15 @@ public class ARObjectAllStuff : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         gameObject.SetActive(false);
+        littleWell = GetComponentInChildren<LittleWell>();
+        office = GetComponentInChildren<Office>();
+        localOffice = GetComponentInChildren<LocalOffice>();
     }
 
     public void OnSpawn()
     {
         gameObject.SetActive(true);
         PlayAnimation("Spawn");
-    }
-
-    public void OnAnimation(string animationName)
-    {
-        
     }
 
     public void OnAnimationEnd(string animationName)
@@ -60,13 +61,13 @@ public class ARObjectAllStuff : MonoBehaviour
         }
     }
     
-    public void PlayAnimation(string animationName)
+    private void PlayAnimation(string animationName)
     {
         animator.SetTrigger(animationName);
     }
 
     // LittleWell up hand animation and DialogOne talk
-    public IEnumerator PlayAnimationDialogOne()
+    private IEnumerator PlayAnimationDialogOne()
     {
         LeanTween.value(1,0,1).setOnUpdate((float value) =>
         {
@@ -77,7 +78,7 @@ public class ARObjectAllStuff : MonoBehaviour
     }
     
     // Paper spawning and DialogTwo talk
-    public IEnumerator PlayAnimationDialogTwo()
+    private IEnumerator PlayAnimationDialogTwo()
     {
         //LittleWell talk something
         PlayAnimation("OfficeComeIn");
@@ -85,7 +86,7 @@ public class ARObjectAllStuff : MonoBehaviour
         OnAnimationEnd("DialogTwo");
     }
     
-    public IEnumerator PlayAnimationDialogThree()
+    private IEnumerator PlayAnimationDialogThree()
     {
         //Office and LocalOffice Talk something
         yield return new WaitForSeconds(eventTimeOfficeTalk);
@@ -94,7 +95,7 @@ public class ARObjectAllStuff : MonoBehaviour
         OnAnimationEnd("DialogThree");
     }
     
-    public IEnumerator PlayAnimationDialogFour()
+    private IEnumerator PlayAnimationDialogFour()
     {
         //LittleWell last talk
         Debug.LogError("LittleWell last talk");
@@ -105,5 +106,60 @@ public class ARObjectAllStuff : MonoBehaviour
         });
         yield return new WaitForSeconds(eventTimeFour);
         OnAnimationEnd("End");
+    }
+    
+    public void LittleWellTalk()
+    {
+        littleWell.Talk();
+    }
+    
+    public void LittleWellIdle()
+    {
+        littleWell.Idle();
+    }
+    
+    public void LittleWellWalk()
+    {
+        littleWell.Walk();
+    }
+    
+    public void OfficeSitOnBoat()
+    {
+        office.SitOnBoat();
+    }
+    
+    public void OfficeWalkDownBoat()
+    {
+        office.WalkDownBoat();
+    }
+    
+    public void OfficeWalk()
+    {
+        office.Walk();
+    }
+    
+    public void OfficeIdle()
+    {
+        office.Idle();
+    }
+    
+    public void OfficeConversation()
+    {
+        office.Conversation();
+    }
+    
+    public void LocalOfficeWalk()
+    {
+        localOffice.Walk();
+    }
+    
+    public void LocalOfficeIdle()
+    {
+        localOffice.Idle();
+    }
+    
+    public void LocalOfficeConversation()
+    {
+        localOffice.Conversation();
     }
 }
