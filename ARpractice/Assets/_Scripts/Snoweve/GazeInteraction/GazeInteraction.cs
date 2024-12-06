@@ -9,7 +9,9 @@ public class GazeInteraction : MonoBehaviour
     public Slider detectionSlider;
     public float observationTime = 5.0f;
     private float detectionTime = 0.0f;
+    private GameObject infoObject;
     [SerializeField] private bool isDetected = false;
+    
 
     private void Awake()
     {
@@ -29,7 +31,14 @@ public class GazeInteraction : MonoBehaviour
                 if(detectionTime >= observationTime)
                 {
                     isDetected = true;
-                    hit.collider.GetComponent<GazeObject>().OnGazeEnter();
+                    //用來開啟對話框
+                    //infoObject.GetComponentInChildren<InfoBehaviour>().SetInfoActive(true);
+                    
+                    //這個是用來找對話內容的ID
+                    //detectedObject.GetComponentInChildren<GazeObject>().gazeObjectID;
+                    
+                    //這個是接口，第一個是標題，第二個是內容
+                    //infoObject.GetComponentInChildren<InfoBehaviour>().SetInfoText(string.Empty, string.Empty);
                 }
             }
             else
