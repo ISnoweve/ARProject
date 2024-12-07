@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class DialogBoxCtr : MonoBehaviour
 {
     public string charaterID;
@@ -10,10 +11,28 @@ public class DialogBoxCtr : MonoBehaviour
     public TMP_Text dialog;
     private bool shown = false;
 
+    internal delegate void DialogBoxEvent();
+    internal event DialogBoxEvent OnShowDialog;
+    internal event DialogBoxEvent OnHideDialog;
     private void Start()
     {
         cg.alpha = 0;
     }
+
+
+    private void OnEnable()
+    {
+        DialogBoxsManager.instance.AddDialogBox(this);
+    }
+
+    private void OnDisable()
+    {
+
+        DialogBoxsManager.instance.DelectDialogBox(charaterID);
+
+    }
+
+
 
     internal void ShowDialog(string text)
     {

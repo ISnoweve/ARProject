@@ -46,6 +46,7 @@ public class DialogueSystem : MonoBehaviour
     private void Awake()
     {
         InitSingleton();
+        Initialize();
     }
 
     private void LoadTextScript()
@@ -107,13 +108,14 @@ public class DialogueSystem : MonoBehaviour
         {
             case "Ani":
                 currentCharactor = dialog.setting[0];
+                Debug.Log("Ani");
                 StartAnimation?.Invoke(currentCharactor, dialog.setting[1]);
                 break;
 
             case "Dialog":
                 // Trigger animation event
                 OnDialogueSet?.Invoke(currentCharactor, dialog.content);
-
+                Debug.Log("Dialog");
                 float _duration;
                 if (!float.TryParse(dialog.setting[0], out _duration))
                 { Debug.LogWarning($"Dialouge duration is not defined !"); break; }

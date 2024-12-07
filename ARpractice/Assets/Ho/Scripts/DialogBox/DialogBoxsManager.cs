@@ -4,30 +4,34 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+[DefaultExecutionOrder(-2)]
 public class DialogBoxsManager : MonoBehaviour
 {
     internal static DialogBoxsManager instance;
-    public DialogBoxCtr[] dialogBoxCtrs;
     private Dictionary<string, DialogBoxCtr> dialogBoxs = new();
     private void Awake()
     {
         instance = this;
-        foreach(DialogBoxCtr dialogBoxCtr in dialogBoxCtrs)
-        {
-            if(dialogBoxs.ContainsKey(dialogBoxCtr.charaterID))
-            {
-                Debug.LogError("Same dialogBox key is existed");
-                continue;
-            }
-            dialogBoxs.Add(dialogBoxCtr.charaterID, dialogBoxCtr);
-        }
     }
+
+    private void OnEnable()
+    {
+        DialogueSystem.OnDialogueSet += ShowDialog;
+ 
+    }
+
+
+    private void OnDisable()
+    {
+        DialogueSystem.OnDialogueSet -= ShowDialog;
+    }
+
 
     internal void ShowDialog(string charaterID,string content)
     {
         if (!dialogBoxs.ContainsKey(charaterID))
         {
-            Debug.LogError("CharaterID key is not existed");
+            Debug.LogError("Charater " + charaterID +" is not existed");
             return;
         }
         dialogBoxs[charaterID].ShowDialog(content);
@@ -42,6 +46,27 @@ public class DialogBoxsManager : MonoBehaviour
         }
         dialogBoxs[charaterID].HideDialog();
     }
+
+    public void AddDialogBox(DialogBoxCtr dialogBoxCtr)
+    {
+        if (dialogBoxs.ContainsKey(dialogBoxCtr.charaterID))
+        {
+            Debug.LogError("Same dialogBox key is existed");
+            return;
+        }
+        dialogBoxs.Add(dialogBoxCtr.charaterID, dialogBoxCtr);
+        Debug.Log("Added");
+    }
+    public void DelectDialogBox(string charaterID)
+    {
+        if (!dialogBoxs.ContainsKey(charaterID))
+        {
+           return;
+        }
+        dialogBoxs.Remove(charaterID);
+        Debug.Log("Removed");
+    }
+
 
     [ContextMenu("T1")]
     public void Test1()

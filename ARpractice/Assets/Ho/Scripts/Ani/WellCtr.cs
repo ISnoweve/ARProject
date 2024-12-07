@@ -6,18 +6,31 @@ public class WellCtr : MonoBehaviour
 {
     public Material waterMateral;
     public Material wellMateral;
-
+    public DialogBoxCtr dialogBoxCtr;
     public void Start()
     {
         waterMateral.SetFloat("_Amount", 0);
         wellMateral.SetFloat("_Amount", 0);
     }
 
+    private void OnEnable()
+    {
+        dialogBoxCtr.OnShowDialog += ShowWater;
+        dialogBoxCtr.OnHideDialog += HideWater;
+    }
+
+
+    private void OnDisable()
+    {
+        dialogBoxCtr.OnShowDialog -= ShowWater;
+        dialogBoxCtr.OnHideDialog -= HideWater;
+    }
 
     [ContextMenu("ShowWell")]
     public void ShowWell()
     {
         LeanTween.value(0, 1, 1f).setOnUpdate((float val) => wellMateral.SetFloat("_Amount", val));
+
     }
 
     [ContextMenu("ShowWater")]

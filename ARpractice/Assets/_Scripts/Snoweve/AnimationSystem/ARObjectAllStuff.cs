@@ -21,7 +21,7 @@ public class ARObjectAllStuff : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        gameObject.SetActive(false);
+       // gameObject.SetActive(false);
         littleWell = GetComponentInChildren<LittleWell>();
         office = GetComponentInChildren<Office>();
         localOffice = GetComponentInChildren<LocalOffice>();
