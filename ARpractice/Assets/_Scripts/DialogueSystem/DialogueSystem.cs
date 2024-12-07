@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.Text;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class DialogueSystem : MonoBehaviour
     public static event DialogueDelegate OnDialogueSet;
 
     public delegate void DialogueEndDelegate();
-    public static event DialogueEndDelegate OnDialogueFinish;
+    public static event DialogueEndDelegate OnDialogueFinish;   // Invoke when one DIALOG is played.
+    public static event DialogueEndDelegate onDialogueEnd;      // Invoke when one SECTION is played.
 
     private string currentCharactor = string.Empty;
 
@@ -63,7 +65,7 @@ public class DialogueSystem : MonoBehaviour
                 case "Start":
                     try
                     {
-                        sectionDictionary.Add(match.Groups["Settings"].Value, dialogues.Count - 1);
+                        sectionDictionary.Add(match.Groups["Settings"].Value, dialogues.Count);
                     }
                     catch (ArgumentException)
                     {
@@ -104,29 +106,48 @@ public class DialogueSystem : MonoBehaviour
 
         var dialog = dialogues[currentIndex];
 
+        StringBuilder stringBuilder = new($"Dialog: {currentIndex}, Tag: \"{dialog.tag}\"");
+
         switch (dialog.tag)
         {
             case "Ani":
                 currentCharactor = dialog.setting[0];
-                Debug.Log("Ani");
-                StartAnimation?.Invoke(currentCharactor, dialog.setting[1]);
+                string animationName = "";
+
+                if (dialog.setting.Length > 1) { animationName = dialog.setting[1]; }
+
+                StartAnimation?.Invoke(currentCharactor, animationName);
+
+                stringBuilder.Append($", Charactor: {currentCharactor}, Ani name: {animationName}");
                 break;
 
             case "Dialog":
                 // Trigger animation event
                 OnDialogueSet?.Invoke(currentCharactor, dialog.content);
-                Debug.Log("Dialog");
+                stringBuilder.Append($", ctx: \"{dialog.content}\"");
+
                 float _duration;
                 if (!float.TryParse(dialog.setting[0], out _duration))
                 { Debug.LogWarning($"Dialouge duration is not defined !"); break; }
 
+                stringBuilder.Append($", Duration: {_duration}");
+
                 LeanTween.delayedCall(_duration, () => {
                     NextDialog();
                     OnDialogueFinish?.Invoke();
-                });
+                });                
+                break;
+
+            case "End":
+                onDialogueEnd?.Invoke();
+                break;
+
+            default:
+                stringBuilder.Append(" is not defined !");
                 break;
         }
 
+        Debug.Log(stringBuilder.ToString());
         return currentIndex;
     }
 
