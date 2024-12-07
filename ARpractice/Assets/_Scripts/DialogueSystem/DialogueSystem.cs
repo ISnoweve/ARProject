@@ -34,7 +34,7 @@ public class DialogueSystem : MonoBehaviour
 
     public delegate void DialogueEndDelegate();
     public static event DialogueEndDelegate OnDialogueFinish;   // Invoke when one DIALOG is played.
-    public static event DialogueEndDelegate onDialogueEnd;      // Invoke when one SECTION is played.
+    public static event DialogueEndDelegate onSectionEnd;       // Invoke when one SECTION is played.
 
     private string currentCharactor = string.Empty;
 
@@ -139,7 +139,7 @@ public class DialogueSystem : MonoBehaviour
                 break;
 
             case "End":
-                onDialogueEnd?.Invoke();
+                onSectionEnd?.Invoke();
                 break;
 
             default:
