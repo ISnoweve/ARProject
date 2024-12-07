@@ -9,12 +9,12 @@ public class LittleWell : MonoBehaviour
     {
         animator.SetTrigger("Walk");
     }
-    
+
     public void Idle()
     {
         animator.SetTrigger("Idle");
     }
-    
+
     public void Talk()
     {
         animator.SetTrigger("Talk");

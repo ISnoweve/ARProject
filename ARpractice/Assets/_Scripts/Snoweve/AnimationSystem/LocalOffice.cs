@@ -4,7 +4,7 @@
 public class LocalOffice : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    
+
     public void Walk()
     {
         animator.SetTrigger("Walk");
@@ -14,7 +14,7 @@ public class LocalOffice : MonoBehaviour
     {
         animator.SetTrigger("Idle");
     }
-    
+
     public void Conversation()
     {
         animator.SetTrigger("Conversation");

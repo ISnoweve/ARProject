@@ -1,11 +1,10 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ARObjectSendEvent : MonoBehaviour
 {
-    private void OnEnable()
+    private void Awake()
     {
-       // ARObjectSpawnSystem.Instance.SpawnObject();
+        //ARObjectSpawnSystem.Instance.SpawnObject();
     }
 }
