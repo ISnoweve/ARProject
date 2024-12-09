@@ -37,6 +37,7 @@ public class DialogueSystem : MonoBehaviour
     public static event DialogueEndDelegate onSectionEnd;       // Invoke when one SECTION is played.
 
     private string currentCharactor = string.Empty;
+    private bool triggerNextDialog = false;
 
     private void Initialize()
     {
@@ -49,6 +50,14 @@ public class DialogueSystem : MonoBehaviour
     {
         InitSingleton();
         Initialize();
+    }
+
+    private void Update()
+    {
+        if (!triggerNextDialog) return;
+
+        NextDialog();
+        triggerNextDialog = false;
     }
 
     private void LoadTextScript()
@@ -102,6 +111,12 @@ public class DialogueSystem : MonoBehaviour
 
     public int SetDialog(int dialogIndex)
     {
+        if (dialogIndex >= dialogues.Count)
+        {
+            Debug.LogWarning($"Dialog index reach end. Calling index : {dialogIndex}, Current index: {currentIndex}, Max index: {dialogues.Count - 1}");
+            return currentIndex;
+        }
+
         currentIndex = dialogIndex;
 
         var dialog = dialogues[currentIndex];
@@ -117,8 +132,9 @@ public class DialogueSystem : MonoBehaviour
                 if (dialog.setting.Length > 1) { animationName = dialog.setting[1]; }
 
                 StartAnimation?.Invoke(currentCharactor, animationName);
-
                 stringBuilder.Append($", Charactor: {currentCharactor}, Ani name: {animationName}");
+
+                triggerNextDialog = true;       // Trigger NextDialog() on next frame to prevent wrong log order
                 break;
 
             case "Dialog":
