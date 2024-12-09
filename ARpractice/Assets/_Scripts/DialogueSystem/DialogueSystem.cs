@@ -56,8 +56,8 @@ public class DialogueSystem : MonoBehaviour
     {
         if (!triggerNextDialog) return;
 
-        NextDialog();
-        triggerNextDialog = false;
+        //triggerNextDialog = false;
+        //NextDialog();
     }
 
     private void LoadTextScript()
@@ -96,6 +96,7 @@ public class DialogueSystem : MonoBehaviour
 
     public int StartDialog(string dialogKey)
     {
+        Debug.Log($"Set dialog via key\"<color=#09FF00>{dialogKey}</color>\".");
         return SetDialog(sectionDictionary[dialogKey]);
     }
 
@@ -106,7 +107,7 @@ public class DialogueSystem : MonoBehaviour
 
     public int NextDialog()
     {
-        return SetDialog(SetDialog(currentIndex + 1));
+        return SetDialog(currentIndex + 1);
     }
 
     public int SetDialog(int dialogIndex)
@@ -134,13 +135,14 @@ public class DialogueSystem : MonoBehaviour
                 StartAnimation?.Invoke(currentCharactor, animationName);
                 stringBuilder.Append($", Charactor: {currentCharactor}, Ani name: {animationName}");
 
-                triggerNextDialog = true;       // Trigger NextDialog() on next frame to prevent wrong log order
+                NextDialog();
+                //triggerNextDialog = true;       // Trigger NextDialog() on next frame to prevent wrong log order
                 break;
 
             case "Dialog":
                 // Trigger animation event
                 OnDialogueSet?.Invoke(currentCharactor, dialog.content);
-                stringBuilder.Append($", ctx: \"{dialog.content}\"");
+                stringBuilder.Append($", ctx: \"<color=#C0D5FF>{dialog.content}</color>\"");
 
                 float _duration;
                 if (!float.TryParse(dialog.setting[0], out _duration))
