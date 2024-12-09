@@ -16,8 +16,7 @@ public class DialogBoxsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        DialogueSystem.OnDialogueSet += ShowDialog;
- 
+        DialogueSystem.OnDialogueSet += ShowDialog; 
     }
 
 
@@ -26,15 +25,17 @@ public class DialogBoxsManager : MonoBehaviour
         DialogueSystem.OnDialogueSet -= ShowDialog;
     }
 
-
     internal void ShowDialog(string charaterID,string content)
     {
+        Debug.Log(charaterID);
+        Debug.Log(content);
         if (!dialogBoxs.ContainsKey(charaterID))
         {
             Debug.LogError("Charater " + charaterID +" is not existed");
             return;
         }
         dialogBoxs[charaterID].ShowDialog(content);
+        
     }
 
     internal void HideDialog(string charaterID, string content)
