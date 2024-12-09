@@ -4,19 +4,24 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-[DefaultExecutionOrder(-2)]
+[DefaultExecutionOrder(-10)]
 public class DialogBoxsManager : MonoBehaviour
 {
     internal static DialogBoxsManager instance;
-    private Dictionary<string, DialogBoxCtr> dialogBoxs = new();
+    private Dictionary<string, DialogBoxCtr> dialogBoxs;
+
+
     private void Awake()
     {
         instance = this;
+        dialogBoxs = new();
+        
     }
 
     private void OnEnable()
     {
-        DialogueSystem.OnDialogueSet += ShowDialog; 
+        DialogueSystem.OnDialogueSet += ShowDialog;
+       
     }
 
 
@@ -27,10 +32,10 @@ public class DialogBoxsManager : MonoBehaviour
 
     internal void ShowDialog(string charaterID,string content)
     {
-        Debug.Log(charaterID);
-        Debug.Log(content);
+        
         if (!dialogBoxs.ContainsKey(charaterID))
         {
+           
             Debug.LogError("Charater " + charaterID +" is not existed");
             return;
         }
@@ -56,16 +61,17 @@ public class DialogBoxsManager : MonoBehaviour
             return;
         }
         dialogBoxs.Add(dialogBoxCtr.charaterID, dialogBoxCtr);
-        Debug.Log("Added");
+       
     }
     public void DelectDialogBox(string charaterID)
     {
+        Debug.Log("Removed");
         if (!dialogBoxs.ContainsKey(charaterID))
         {
            return;
         }
-        dialogBoxs.Remove(charaterID);
-        Debug.Log("Removed");
+        //dialogBoxs.Remove(charaterID);
+     
     }
 
 
