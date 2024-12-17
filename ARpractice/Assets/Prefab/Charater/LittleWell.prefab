@@ -2022,10 +2022,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 759530931080277809}
     m_Modifications:
-    - target: {fileID: 1318409002834595202, guid: e141e33dca429b94cb292adad22685f6, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1465276405220169692, guid: e141e33dca429b94cb292adad22685f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2066,21 +2062,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7521605275602415810, guid: e141e33dca429b94cb292adad22685f6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7940719436986055901, guid: e141e33dca429b94cb292adad22685f6, type: 3}
       propertyPath: m_Name
       value: DialogBox
       objectReference: {fileID: 0}
-    - target: {fileID: 7940719436986055901, guid: e141e33dca429b94cb292adad22685f6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8682717236406210452, guid: e141e33dca429b94cb292adad22685f6, type: 3}
       propertyPath: charaterID
-      value: "\u5C0F\u4E95\u5152"
+      value: Well
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

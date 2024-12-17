@@ -49,5 +49,8 @@ public class DialogBoxCtr : MonoBehaviour
         shown = false;
         LeanTween.value(1, 0, 1).setOnUpdate((float val) => cg.alpha = val);
     }
-
+    private void Update()
+    {
+        transform.forward = transform.position- CameraCtr.instance.transform.position   ;
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,32 +16,42 @@ public class DialogBoxsManager : MonoBehaviour
     {
         instance = this;
         dialogBoxs = new();
-        
+
     }
 
     private void OnEnable()
     {
         DialogueSystem.OnDialogueSet += ShowDialog;
-       
+        DialogueSystem.onSectionEnd += HideAllDialog;
+
     }
 
 
     private void OnDisable()
     {
         DialogueSystem.OnDialogueSet -= ShowDialog;
+        DialogueSystem.onSectionEnd -= HideAllDialog;
     }
 
-    internal void ShowDialog(string charaterID,string content)
+    internal void ShowDialog(string charaterID, string content)
     {
-        
-        if (!dialogBoxs.ContainsKey(charaterID))
+        foreach (var dialog in dialogBoxs)
         {
-           
-            Debug.LogError("Charater " + charaterID +" is not existed");
-            return;
+            if (dialog.Key == charaterID)
+            {
+                dialogBoxs[charaterID].ShowDialog(content);
+            }
+            else
+                dialog.Value.HideDialog();
         }
-        dialogBoxs[charaterID].ShowDialog(content);
-        
+        //if (!dialogBoxs.ContainsKey(charaterID))
+        //{
+
+        //    Debug.LogError("Charater " + charaterID +" is not existed");
+        //    return;
+        //}
+        //dialogBoxs[charaterID].ShowDialog(content);
+
     }
 
     internal void HideDialog(string charaterID, string content)
@@ -61,19 +72,27 @@ public class DialogBoxsManager : MonoBehaviour
             return;
         }
         dialogBoxs.Add(dialogBoxCtr.charaterID, dialogBoxCtr);
-       
+
     }
     public void DelectDialogBox(string charaterID)
     {
         Debug.Log("Removed");
         if (!dialogBoxs.ContainsKey(charaterID))
         {
-           return;
+            return;
         }
         //dialogBoxs.Remove(charaterID);
-     
+
     }
 
+
+    private void HideAllDialog()
+    {
+        foreach (var dialog in dialogBoxs)
+        {
+            dialog.Value.HideDialog();
+        }
+    }
 
     [ContextMenu("T1")]
     public void Test1()
@@ -92,5 +111,7 @@ public class DialogBoxsManager : MonoBehaviour
     {
         dialogBoxs["Well"].HideDialog();
     }
+
+
 
 }
