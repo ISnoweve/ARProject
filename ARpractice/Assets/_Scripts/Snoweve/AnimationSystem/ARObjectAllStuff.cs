@@ -9,7 +9,9 @@ public class ARObjectAllStuff : MonoBehaviour
     public Material teleport;
     public LittleWell littleWell;
     public Office office;
+    public OfficeB officeB;
     public LocalOffice localOffice;
+    public LocalOfficeB localOfficeB;
 
     public float eventTimeOne;
     public float eventTimeTwo;
@@ -148,6 +150,31 @@ public class ARObjectAllStuff : MonoBehaviour
     {
         office.Conversation();
     }
+    
+    public void OfficeBSitOnBoat()
+    {
+        officeB.SitOnBoat();
+    }
+
+    public void OfficeBWalkDownBoat()
+    {
+        officeB.WalkDownBoat();
+    }
+
+    public void OfficeBWalk()
+    {
+        officeB.Walk();
+    }
+
+    public void OfficeBIdle()
+    {
+        officeB.Idle();
+    }
+
+    public void OfficeBConversation()
+    {
+        officeB.Conversation();
+    }
 
     public void LocalOfficeWalk()
     {
@@ -162,5 +189,20 @@ public class ARObjectAllStuff : MonoBehaviour
     public void LocalOfficeConversation()
     {
         localOffice.Conversation();
+    }
+    
+    public void LocalOfficeBWalk()
+    {
+        localOfficeB.Walk();
+    }
+
+    public void LocalOfficeBIdle()
+    {
+        localOfficeB.Idle();
+    }
+
+    public void LocalOfficeBConversation()
+    {
+        localOfficeB.Conversation();
     }
 }
