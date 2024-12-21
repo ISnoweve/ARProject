@@ -25,7 +25,7 @@ public class DialogueSystem : MonoBehaviour
     public Dictionary<string, int> sectionDictionary { get; private set; } = new();
     public int currentIndex { get; private set; } = -1;
 
-    private readonly Regex regex = new(@"^\[(?<EventTag>\w+)(?>\:(?<Settings>[\w\d,]*))?\](?<Content>.+)?", RegexOptions.Multiline);
+    private readonly Regex regex = new(@"^\[(?<EventTag>\w+)(?>\:(?<Settings>[\w\d.,]*))?\](?<Content>.+)?", RegexOptions.Multiline);
     private List<Dialogue> dialogues = new();
     
     public delegate void DialogueDelegate(string chara, string content);
