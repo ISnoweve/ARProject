@@ -139,6 +139,7 @@ public class ARObjectAllStuff : MonoBehaviour
     public void OfficeWalk()
     {
         office.Walk();
+        officeB.Walk();
     }
 
     public void OfficeIdle()

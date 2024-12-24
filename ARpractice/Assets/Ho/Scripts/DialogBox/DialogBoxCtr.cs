@@ -40,14 +40,16 @@ public class DialogBoxCtr : MonoBehaviour
         if (shown)
             return;
         shown = true;
-        LeanTween.value(0, 1, 1).setOnUpdate((float val) => cg.alpha = val);
+        LeanTween.value(0, 1, 0.5f).setOnUpdate((float val) => cg.alpha = val);
+        OnShowDialog?.Invoke();
     }
     internal void HideDialog()
     {
         if (!shown)
             return;
         shown = false;
-        LeanTween.value(1, 0, 1).setOnUpdate((float val) => cg.alpha = val);
+        LeanTween.value(1, 0, 0.5f).setOnUpdate((float val) => cg.alpha = val);
+        OnHideDialog?.Invoke();
     }
     private void Update()
     {

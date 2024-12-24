@@ -8,6 +8,7 @@ public class OfficalAnisControl : MonoBehaviour
     public WellCtr wellCtr;
     public InOutPortalRender offical;
     public InOutPortalRender localOffical;
+    public FootStep footStep;
     public void OpenTele()
     {
         teleControl.PortalApper();
@@ -18,8 +19,13 @@ public class OfficalAnisControl : MonoBehaviour
         teleControl.PortalDisapper();
     }
 
-    public void WellApper()
+    public void GootStepApper()
     {
+        footStep.Show();
+    }
+        public void WellApper()
+    {
+        footStep.Hide();
         wellCtr.ShowWell();
        LeanTween.delayedCall(1,()=> wellCtr.ShowWater());
     }

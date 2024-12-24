@@ -30,7 +30,7 @@ public class WellCtr : MonoBehaviour
     public void ShowWell()
     {
         LeanTween.value(0, 1, 1f).setOnUpdate((float val) => wellMateral.SetFloat("_Amount", val));
-
+       
     }
 
     [ContextMenu("ShowWater")]

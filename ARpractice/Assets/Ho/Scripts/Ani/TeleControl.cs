@@ -6,6 +6,12 @@ public class TeleControl : MonoBehaviour
 {
    public Animator paperAni;
     public Material protalMaterial;
+    private void Awake()
+    {
+        protalMaterial.SetFloat("_DissolveAmount", 1);
+    }
+
+
     public void PortalApper()
     {
         paperAni.Play("PaperApper");

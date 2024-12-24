@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66\u6E2C\u8A66"
+  m_text: "\u5F8C\u7531\u8523\u5143\u6A1E\u6350\u6350\u4FF8\uFF0C\u65BC\u5357\u6CB3\u6E2F\u4E0A\u4FEE\u5EFA\u78BC\u982D\u8207\u767B\u5CB8\u968E\u68AF\uFF0C\u52A0\u9020\u77F3\u574A\uFF0C\u4EE5\u9001\u5F80\u8FCE\u4F86\u6E05\u4EE3\u4EFB\u8077\u53F0\u7063\u7684\u5B98\u54E1\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b6cf05dc1059ab04ca9c1e51e441ec62, type: 2}
   m_sharedMaterial: {fileID: 8613289560256370950, guid: b6cf05dc1059ab04ca9c1e51e441ec62, type: 2}
@@ -333,7 +333,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 127.6, y: 67.8}
+  m_SizeDelta: {x: 127.6, y: 54.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6909676174902749297
 CanvasRenderer:
