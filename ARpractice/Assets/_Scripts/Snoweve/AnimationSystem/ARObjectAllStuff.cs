@@ -129,11 +129,13 @@ public class ARObjectAllStuff : MonoBehaviour
     public void OfficeSitOnBoat()
     {
         office.SitOnBoat();
+        officeB.SitOnBoat();
     }
 
     public void OfficeWalkDownBoat()
     {
         office.WalkDownBoat();
+        officeB.WalkDownBoat();
     }
 
     public void OfficeWalk()
@@ -145,65 +147,30 @@ public class ARObjectAllStuff : MonoBehaviour
     public void OfficeIdle()
     {
         office.Idle();
+        officeB.Idle();
     }
 
     public void OfficeConversation()
     {
         office.Conversation();
-    }
-    
-    public void OfficeBSitOnBoat()
-    {
-        officeB.SitOnBoat();
-    }
-
-    public void OfficeBWalkDownBoat()
-    {
-        officeB.WalkDownBoat();
-    }
-
-    public void OfficeBWalk()
-    {
-        officeB.Walk();
-    }
-
-    public void OfficeBIdle()
-    {
-        officeB.Idle();
-    }
-
-    public void OfficeBConversation()
-    {
         officeB.Conversation();
     }
 
     public void LocalOfficeWalk()
     {
         localOffice.Walk();
+        localOfficeB.Walk();
     }
 
     public void LocalOfficeIdle()
     {
         localOffice.Idle();
+        localOfficeB.Idle();
     }
 
     public void LocalOfficeConversation()
     {
         localOffice.Conversation();
-    }
-    
-    public void LocalOfficeBWalk()
-    {
-        localOfficeB.Walk();
-    }
-
-    public void LocalOfficeBIdle()
-    {
-        localOfficeB.Idle();
-    }
-
-    public void LocalOfficeBConversation()
-    {
         localOfficeB.Conversation();
     }
 }
