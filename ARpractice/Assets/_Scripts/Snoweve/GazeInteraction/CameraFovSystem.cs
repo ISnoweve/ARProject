@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFovSystem : MonoBehaviour
 {
-    public CameraFovSystem instance;
+    public static CameraFovSystem Instance;
     public int fovOriginalIndex = 60;
     public int fovMaxIndex = 10;
     public float zoomSpeed = 10f;
@@ -12,7 +12,7 @@ public class CameraFovSystem : MonoBehaviour
     
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     
     private void Start()

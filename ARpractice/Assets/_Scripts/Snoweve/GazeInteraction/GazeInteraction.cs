@@ -31,14 +31,7 @@ public class GazeInteraction : MonoBehaviour
                 if(detectionTime >= observationTime)
                 {
                     isDetected = true;
-                    //用來開啟對話框
-                    //infoObject.GetComponentInChildren<InfoBehaviour>().SetInfoActive(true);
-                    
-                    //這個是用來找對話內容的ID
-                    //detectedObject.GetComponentInChildren<GazeObject>().gazeObjectID;
-                    
-                    //這個是接口，第一個是標題，第二個是內容
-                    //infoObject.GetComponentInChildren<InfoBehaviour>().SetInfoText(string.Empty, string.Empty);
+                    CameraFovSystem.Instance.ZoomIn();
                 }
             }
             else
@@ -55,6 +48,7 @@ public class GazeInteraction : MonoBehaviour
             detectionSlider.gameObject.SetActive(false);
             detectionTime = 0.0f;
             detectionSlider.value = 0.0f;
+            CameraFovSystem.Instance.ZoomOut();
         }
     }
 
