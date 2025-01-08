@@ -1,60 +1,61 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GazeInteraction : MonoBehaviour
+namespace Snoweve.GazeInteraction
 {
-    public Slider detectionSlider;
-    public float observationTime = 5.0f;
-    private float detectionTime = 0.0f;
-    private GameObject infoObject;
-    [SerializeField] private bool isDetected = false;
+    public class GazeInteraction : MonoBehaviour
+    {
+        //public Slider detectionSlider;
+        public float observationTime = 5.0f;
+        private float detectionTime = 0.0f;
+        private GameObject infoObject;
+        [SerializeField] private bool isDetected = false;
     
 
-    private void Awake()
-    {
-        detectionSlider.gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        private void Awake()
         {
-            if (hit.collider.GetComponent<GazeObject>() != null && !isDetected)
+            //detectionSlider.gameObject.SetActive(false);
+        }
+
+        void Update()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit))
             {
-                detectionSlider.gameObject.SetActive(true);
-                detectionTime += Time.deltaTime;
-                detectionSlider.value = detectionTime / observationTime;
-                if(detectionTime >= observationTime)
+                if (hit.collider.GetComponent<GazeObject>() != null && !isDetected)
                 {
-                    isDetected = true;
                     CameraFovSystem.Instance.ZoomIn();
+                    //detectionSlider.gameObject.SetActive(true);
+                    //detectionTime += Time.deltaTime;
+                    //detectionSlider.value = detectionTime / observationTime;
+                    // if(detectionTime >= observationTime)
+                    // {
+                    //     isDetected = true;
+                    //     CameraFovSystem.Instance.ZoomIn();
+                    // }
+                }
+                else
+                {
+                    //isDetected = false;
+                    //detectionSlider.gameObject.SetActive(false);
+                    //detectionTime = 0.0f;
+                    //detectionSlider.value = 0.0f;
                 }
             }
             else
             {
-                isDetected = false;
-                detectionSlider.gameObject.SetActive(false);
-                detectionTime = 0.0f;
-                detectionSlider.value = 0.0f;
+                //isDetected = false;
+                //detectionSlider.gameObject.SetActive(false);
+                //detectionTime = 0.0f;
+                //detectionSlider.value = 0.0f;
+                CameraFovSystem.Instance.ZoomOut();
             }
         }
-        else
-        {
-            isDetected = false;
-            detectionSlider.gameObject.SetActive(false);
-            detectionTime = 0.0f;
-            detectionSlider.value = 0.0f;
-            CameraFovSystem.Instance.ZoomOut();
-        }
-    }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, transform.forward * 100);
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(transform.position, transform.forward * 100);
+        }
     }
 }

@@ -1,7 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GazeObject : MonoBehaviour
+namespace Snoweve.GazeInteraction
 {
-    public string gazeObjectID;
+    public class GazeObject : MonoBehaviour
+    {
+        public string gazeObjectID;
+    }
 }

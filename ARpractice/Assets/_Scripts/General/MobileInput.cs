@@ -10,45 +10,45 @@ namespace General
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _recordInputTime += Time.deltaTime;
-                
-                Debug.Log("Click");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 10))
-                {
-                    IClickable clickable = hit.transform.GetComponent<IClickable>();
-                    if (clickable != null)
-                    {
-                        clickable.OnClick();
-                    }
-                }
-            }
+            // if (Input.GetMouseButtonDown(0))
+            // {
+            //     _recordInputTime += Time.deltaTime;
+            //     
+            //     Debug.Log("Click");
+            //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //     RaycastHit hit;
+            //     if (Physics.Raycast(ray, out hit, 10))
+            //     {
+            //         IClickable clickable = hit.transform.GetComponent<IClickable>();
+            //         if (clickable != null)
+            //         {
+            //             clickable.OnClick();
+            //         }
+            //     }
+            // }
 
-            if (Input.GetMouseButton(0))
-            {
-                _recordInputTime += Time.deltaTime;
-                if (_recordInputTime >= 3)
-                {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-                    Debug.Log("OnClickWithLongTap");
-                    if (Physics.Raycast(ray, out hit, 10))
-                    {
-                        IClickable clickable = hit.transform.GetComponent<IClickable>();
-                        if (clickable != null)
-                        {
-                            clickable.OnClickWithLongTap();
-                        }
-                    }
-                }
-            }
-            else
-            {
-                _recordInputTime = 0;
-            }
+            // if (Input.GetMouseButton(0))
+            // {
+            //     _recordInputTime += Time.deltaTime;
+            //     if (_recordInputTime >= 3)
+            //     {
+            //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //         RaycastHit hit;
+            //         Debug.Log("OnClickWithLongTap");
+            //         if (Physics.Raycast(ray, out hit, 10))
+            //         {
+            //             IClickable clickable = hit.transform.GetComponent<IClickable>();
+            //             if (clickable != null)
+            //             {
+            //                 clickable.OnClickWithLongTap();
+            //             }
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     _recordInputTime = 0;
+            // }
 
             if (Input.touchCount > 0)
             {
