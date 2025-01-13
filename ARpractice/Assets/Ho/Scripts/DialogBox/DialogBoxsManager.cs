@@ -54,7 +54,7 @@ public class DialogBoxsManager : MonoBehaviour
 
     }
 
-    internal void HideDialog(string charaterID, string content)
+    internal void HideDialog(string charaterID)
     {
         if (!dialogBoxs.ContainsKey(charaterID))
         {

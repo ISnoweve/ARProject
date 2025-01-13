@@ -9,6 +9,7 @@ public class DialogBoxCtr : MonoBehaviour
     public string charaterID;
     public CanvasGroup cg;
     public TMP_Text dialog;
+
     private bool shown = false;
 
     internal delegate void DialogBoxEvent();
