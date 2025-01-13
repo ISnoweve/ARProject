@@ -223,8 +223,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5760098889663453751}
-  - component: {fileID: 666419217376566673}
-  - component: {fileID: 7151083158111927500}
+  - component: {fileID: 4583373958542875042}
+  - component: {fileID: 1363056204178655769}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -248,28 +248,7 @@ Transform:
   - {fileID: 7455895695032292830}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &666419217376566673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5307419514082168977}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7151083158111927500
+--- !u!114 &4583373958542875042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,9 +257,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5307419514082168977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a99379b1b5da4d128be8efba985f0a6c, type: 3}
+  m_Script: {fileID: 11500000, guid: da4903f771a5bdd45a403aa1f971e13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1363056204178655769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5307419514082168977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9c87bb561e7544c8192dee1b87e3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoTitle: {fileID: 4298014214594209604}
+  infoContext: {fileID: 8055478034075343411}
 --- !u!1 &7975336876385439113
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7975336876385439113}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.00000004371139, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -3.2454993e-15, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -417,7 +410,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoTitle: {fileID: 0}
   infoContext: {fileID: 0}
-  infoTextID: 
 --- !u!1 &8324260434543229174
 GameObject:
   m_ObjectHideFlags: 0
