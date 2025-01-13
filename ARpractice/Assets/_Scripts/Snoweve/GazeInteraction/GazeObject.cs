@@ -6,26 +6,14 @@ namespace Snoweve.GazeInteraction
 {
     public class GazeObject : MonoBehaviour , IClickable
     {
+        public string dialogueID;
         public bool canClick;
-        public bool isRightClick;
-        public InfoBehaviour infoBehaviour;
-
-        private void Awake()
-        {
-            infoBehaviour.gameObject.SetActive(false);
-        }
+        private bool _isRightClick;
 
         public void OnClick()
         {
             if(!canClick)return;
-            if (isRightClick)
-            {
-                
-            }
-            else
-            {
-                infoBehaviour.gameObject.SetActive(true);
-            }
+            OpenDialog();
         }
 
         public void OnClickWithLongTap()
@@ -33,9 +21,21 @@ namespace Snoweve.GazeInteraction
             //
         }
         
-        public void CloseInfo()
+        public void OpenDialog()
         {
-            infoBehaviour.gameObject.SetActive(false);
+            if (_isRightClick)
+            {
+                //Game Over
+            }
+            else
+            {
+                DialogBoxsManager.instance.ShowDialog(dialogueID, "");
+            }
+        }
+        
+        public void CloseDialog()
+        {
+            DialogBoxsManager.instance.HideDialog(dialogueID);
         }
     }
 }

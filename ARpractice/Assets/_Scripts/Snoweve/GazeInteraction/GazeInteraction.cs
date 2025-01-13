@@ -37,14 +37,12 @@ namespace Snoweve.GazeInteraction
                     }
                 }
             }
-            // else
-            // {
-            //     //isDetected = false;
-            //     //detectionSlider.gameObject.SetActive(false);
-            //     //detectionTime = 0.0f;
-            //     //detectionSlider.value = 0.0f;
-            //     CameraFovSystem.Instance.ZoomOut();
-            // }
+            else
+            {
+                detectionSlider.gameObject.SetActive(false);
+                detectionTime = 0.0f;
+                detectionSlider.value = 0.0f;
+            }
         }
         
         [ContextMenu("Out Of Sight")]
@@ -54,7 +52,7 @@ namespace Snoweve.GazeInteraction
             detectionTime = 0.0f;
             CameraFovSystem.Instance.ZoomOut();
             gazeObject.canClick = false;
-            gazeObject.CloseInfo();
+            gazeObject.CloseDialog();
         }
 
         private void OnDrawGizmos()

@@ -32,9 +32,7 @@ public class DialogBoxCtr : MonoBehaviour
         DialogBoxsManager.instance.DelectDialogBox(charaterID);
 
     }
-
-
-
+    
     internal void ShowDialog(string text)
     {
         dialog.text = text;
