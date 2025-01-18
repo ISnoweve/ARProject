@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465276405220169692}
   - component: {fileID: 8682717236406210452}
+  - component: {fileID: 2069390279859942443}
   m_Layer: 0
   m_Name: DialogBox
   m_TagString: Untagged
@@ -298,6 +299,18 @@ MonoBehaviour:
   charaterID: 
   cg: {fileID: 1318409002834595202}
   dialog: {fileID: 621662266641060823}
+--- !u!114 &2069390279859942443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719436986055901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7badd733c6c928244a392507e375f3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9000095354988947747
 GameObject:
   m_ObjectHideFlags: 0

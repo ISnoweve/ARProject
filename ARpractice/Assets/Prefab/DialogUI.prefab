@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaterID: WellUI
-  cg: {fileID: 0}
+  cg: {fileID: 6463091151386001768}
   dialog: {fileID: 500703122138118070}
 --- !u!1 &9066657341342120963
 GameObject:

@@ -35,6 +35,7 @@ public class DialogBoxCtr : MonoBehaviour
     
     internal void ShowDialog(string text)
     {
+        Debug.Log(text);
         dialog.text = text;
         if (shown)
             return;
@@ -50,8 +51,5 @@ public class DialogBoxCtr : MonoBehaviour
         LeanTween.value(1, 0, 0.5f).setOnUpdate((float val) => cg.alpha = val);
         OnHideDialog?.Invoke();
     }
-    private void Update()
-    {
-        transform.forward = transform.position- CameraCtr.instance.transform.position   ;
-    }
+ 
 }
