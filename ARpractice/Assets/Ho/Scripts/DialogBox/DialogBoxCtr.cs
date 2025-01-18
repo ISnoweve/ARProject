@@ -21,7 +21,7 @@ public class DialogBoxCtr : MonoBehaviour
     }
 
 
-    private void OnEnable()
+    private void Awake()
     {
         DialogBoxsManager.instance.AddDialogBox(this);
     }
@@ -29,7 +29,7 @@ public class DialogBoxCtr : MonoBehaviour
     private void OnDisable()
     {
 
-        DialogBoxsManager.instance.DelectDialogBox(charaterID);
+      //  DialogBoxsManager.instance.DelectDialogBox(charaterID);
 
     }
     

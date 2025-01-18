@@ -502,7 +502,7 @@ Shader "Custom/Dissolve With StencilBuffer"
             surface.Smoothness = _Property_83f2031ef51844d8bb56e3c562f7d67e_Out_0;
             surface.Occlusion = 1;
             surface.Alpha = _SimpleNoise_c64f71866553420fb72f52334c2f44ff_Out_2;
-            surface.AlphaClipThreshold = _Property_09bb1f3d2bfc401ea536743433b12cc9_Out_0;
+            surface.AlphaClipThreshold = _Property_09bb1f3d2bfc401ea536743433b12cc9_Out_0+(1-_SampleTexture2D_6b95ddba314b4c939a5b993dd5c66fe6_A_7);
             return surface;
         }
         

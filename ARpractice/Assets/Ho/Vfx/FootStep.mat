@@ -62,7 +62,7 @@ Material:
     - _AlphaToMask: 0
     - _Amount: 0
     - _AmountEnd: 1
-    - _AmountStart: 0
+    - _AmountStart: 1
     - _Blend: 1
     - _CastShadows: 1
     - _Cull: 2

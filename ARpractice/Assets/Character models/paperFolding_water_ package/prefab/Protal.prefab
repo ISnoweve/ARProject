@@ -8995,7 +8995,7 @@ GameObject:
   - component: {fileID: 7428651372336764700}
   - component: {fileID: 6803912529402408528}
   m_Layer: 0
-  m_Name: paperFolding_model_FBX
+  m_Name: Protal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
