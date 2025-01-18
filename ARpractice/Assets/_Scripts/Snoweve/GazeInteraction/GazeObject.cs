@@ -4,38 +4,24 @@ using UnityEngine;
 
 namespace Snoweve.GazeInteraction
 {
-    public class GazeObject : MonoBehaviour , IClickable
+    public class GazeObject : MonoBehaviour 
     {
+        public TouchBehaviour touchBehaviour;
+
+        [Header("If there is no TouchBehaviour, write this parameter")]
         public string dialogueID;
-        public bool canClick;
-        private bool _isRightClick;
 
-        public void OnClick()
+        public void OnGaze()
         {
-            if(!canClick)return;
-            OpenDialog();
-        }
-
-        public void OnClickWithLongTap()
-        {
-            //
-        }
-        
-        public void OpenDialog()
-        {
-            if (_isRightClick)
+            CameraFovSystem.Instance.ZoomIn();
+            if (touchBehaviour == null)
             {
-                //Game Over
-            }
-            else
-            {
+                //NoItem Click Function
                 DialogBoxsManager.instance.ShowDialog(dialogueID, "");
+                QuadTouchBehaviour.Instance.gameObject.SetActive(true);
+                return;
             }
-        }
-        
-        public void CloseDialog()
-        {
-            DialogBoxsManager.instance.HideDialog(dialogueID);
+            touchBehaviour.canClick = true;
         }
     }
 }
