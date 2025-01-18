@@ -24,6 +24,7 @@ namespace Snoweve.GazeInteraction
             {
                 if (hit.collider.GetComponent<GazeObject>() != null && !isDetected)
                 {
+                    Debug.Log("Gaze Detected");
                     gazeObject = hit.collider.GetComponent<GazeObject>();
                     detectionSlider.gameObject.SetActive(true);
                     detectionSlider.value = detectionTime / observationTime;
@@ -31,9 +32,8 @@ namespace Snoweve.GazeInteraction
                     if(detectionTime >= observationTime) 
                     { 
                         detectionSlider.gameObject.SetActive(false);
-                        isDetected = true; 
-                        gazeObject.canClick = true;
-                        CameraFovSystem.Instance.ZoomIn();
+                        isDetected = true;
+                        gazeObject.OnGaze();
                     }
                 }
             }
@@ -45,15 +45,6 @@ namespace Snoweve.GazeInteraction
             }
         }
         
-        [ContextMenu("Out Of Sight")]
-        public void OutOfSight()
-        {
-            isDetected = false;
-            detectionTime = 0.0f;
-            CameraFovSystem.Instance.ZoomOut();
-            gazeObject.canClick = false;
-            gazeObject.CloseDialog();
-        }
 
         private void OnDrawGizmos()
         {
