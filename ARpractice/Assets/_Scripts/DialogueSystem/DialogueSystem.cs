@@ -27,7 +27,7 @@ public class DialogueSystem : MonoBehaviour
 
     private readonly Regex regex = new(@"^\[(?<EventTag>\w+)(?>\:(?<Settings>[\w\d.,]*))?\](?<Content>.+)?", RegexOptions.Multiline);
     private List<Dialogue> dialogues = new();
-    
+
     public delegate void DialogueDelegate(string chara, string content);
     public static event DialogueDelegate StartAnimation;
     public static event DialogueDelegate OnDialogueSet;
@@ -67,7 +67,7 @@ public class DialogueSystem : MonoBehaviour
         dialogues.Clear();
 
         var matches = regex.Matches(textScript.text);
-        foreach(Match match in matches)
+        foreach (Match match in matches)
         {
             switch (match.Groups["EventTag"].Value)
             {
@@ -150,10 +150,18 @@ public class DialogueSystem : MonoBehaviour
 
                 stringBuilder.Append($", Duration: {_duration}");
 
-                LeanTween.delayedCall(_duration, () => {
-                    NextDialog();
+                if (_duration > 0)
+                {
+                    LeanTween.delayedCall(_duration, () =>
+                    {
+                        NextDialog();
+                        OnDialogueFinish?.Invoke();
+                    });
+                }
+                else
+                {
                     OnDialogueFinish?.Invoke();
-                });                
+                }
                 break;
 
             case "End":
