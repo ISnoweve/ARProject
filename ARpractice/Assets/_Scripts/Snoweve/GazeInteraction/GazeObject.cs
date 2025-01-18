@@ -9,16 +9,17 @@ namespace Snoweve.GazeInteraction
         public TouchBehaviour touchBehaviour;
 
         [Header("If there is no TouchBehaviour, write this parameter")]
-        public string dialogueID;
+		public bool noItem;
+        public string content;
 
         public void OnGaze()
         {
             CameraFovSystem.Instance.ZoomIn();
-            if (touchBehaviour == null)
+            if (noItem)
             {
                 //NoItem Click Function
-                DialogBoxsManager.instance.ShowDialog(dialogueID, "");
-                QuadTouchBehaviour.Instance.gameObject.SetActive(true);
+                DialogueSystem.instance.StartDialog(content);
+                QuadTouchBehaviour.Instance.SetActive(true);
                 return;
             }
             touchBehaviour.canClick = true;
