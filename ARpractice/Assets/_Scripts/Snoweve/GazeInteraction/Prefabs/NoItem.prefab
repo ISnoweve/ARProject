@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchBehaviour: {fileID: 0}
-  dialogueID: 
+  noItem: 1
+  content: 

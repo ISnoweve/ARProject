@@ -9,6 +9,7 @@ namespace Snoweve.GazeInteraction
         public string dialogueID;
         public bool canClick;
         public bool isRightObjectToClick;
+        public string content;
 
         private void Awake()
         {
@@ -21,16 +22,16 @@ namespace Snoweve.GazeInteraction
             if (isRightObjectToClick)
             {
                 //RightItem Click Function
-                DialogBoxsManager.instance.ShowDialog(dialogueID, "");
+                DialogueSystem.instance.StartDialog(content);
                 canClick = false;
-                QuadTouchBehaviour.Instance.gameObject.SetActive(true);
+                QuadTouchBehaviour.Instance.SetActive(true);
             }
             else
             {
                 //WrongItem Click Function
-                DialogBoxsManager.instance.ShowDialog(dialogueID, "");
+                DialogueSystem.instance.StartDialog(content);
                 canClick = false;
-                QuadTouchBehaviour.Instance.gameObject.SetActive(true);
+                QuadTouchBehaviour.Instance.SetActive(true);
             }
         }
 

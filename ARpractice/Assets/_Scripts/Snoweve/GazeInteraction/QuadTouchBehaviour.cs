@@ -25,5 +25,11 @@ namespace Snoweve.GazeInteraction
         {
             throw new System.NotImplementedException();
         }
+        
+        public void SetActive(bool active)
+        {
+            gameObject.SetActive(active);
+            GazeInteraction.Instance.isDetected = true;
+        }
     }
 }

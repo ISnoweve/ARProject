@@ -5,15 +5,17 @@ namespace Snoweve.GazeInteraction
 {
     public class GazeInteraction : MonoBehaviour
     {
+		public static GazeInteraction Instance;
         public Slider detectionSlider;
         public float observationTime = 5.0f; 
         public float detectionTime = 0.0f;
-        [SerializeField] private bool isDetected = false;
+        public bool isDetected = false;
         [SerializeField] private GazeObject gazeObject;
-    
+
 
         private void Awake()
         {
+						Instance = this;
             detectionSlider.gameObject.SetActive(false);
         }
 
@@ -44,7 +46,7 @@ namespace Snoweve.GazeInteraction
                 detectionSlider.value = 0.0f;
             }
         }
-        
+
 
         private void OnDrawGizmos()
         {
