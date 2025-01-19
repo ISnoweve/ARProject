@@ -23,6 +23,7 @@ namespace Snoweve.GazeInteraction
             {
                 //RightItem Click Function
                 DialogueSystem.instance.StartDialog(content);
+                Debug.Log("Right Item Clicked");
                 canClick = false;
                 QuadTouchBehaviour.Instance.SetActive(true);
             }
