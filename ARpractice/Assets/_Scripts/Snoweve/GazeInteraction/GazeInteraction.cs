@@ -15,13 +15,14 @@ namespace Snoweve.GazeInteraction
 
         private void Awake()
         {
-						Instance = this;
+            Instance = this;
             detectionSlider.gameObject.SetActive(false);
         }
 
         void Update()
         {
             RaycastHit hit;
+            if(CameraFovSystem.Instance.isZooming)return;
             if (Physics.Raycast(transform.position, transform.forward, out hit))
             {
                 if (hit.collider.GetComponent<GazeObject>() != null && !isDetected)
@@ -47,6 +48,12 @@ namespace Snoweve.GazeInteraction
             }
         }
 
+        
+        public void ResetDetection()
+        {
+            detectionTime = 0.0f;
+            isDetected = false;
+        }
 
         private void OnDrawGizmos()
         {

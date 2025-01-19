@@ -9,6 +9,7 @@ namespace Snoweve.GazeInteraction
         public int fovOriginalIndex = 60;
         public int fovMaxIndex = 10;
         public float zoomSpeed = 10f;
+        public bool isZooming = false;
         private Camera _camera;
     
         private void Awake()
@@ -23,11 +24,13 @@ namespace Snoweve.GazeInteraction
 
         public void ZoomIn()
         {
+            isZooming = true;
             StartCoroutine(ZoomInIng());
         }
     
         public void ZoomOut()
         {
+            isZooming = true;
             StartCoroutine(ZoomOutIng());
         }
     
@@ -38,6 +41,7 @@ namespace Snoweve.GazeInteraction
                 _camera.fieldOfView -= zoomSpeed*Time.deltaTime;
                 yield return null;
             }
+            isZooming = false;
         }
     
         private IEnumerator ZoomOutIng()
@@ -47,6 +51,7 @@ namespace Snoweve.GazeInteraction
                 _camera.fieldOfView += zoomSpeed*Time.deltaTime;
                 yield return null;
             }
+            isZooming = false;
         }
     }
 }

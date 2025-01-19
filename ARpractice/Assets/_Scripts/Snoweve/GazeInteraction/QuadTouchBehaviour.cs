@@ -17,8 +17,9 @@ namespace Snoweve.GazeInteraction
 
         public void OnClick()
         {
+            if(CameraFovSystem.Instance.isZooming)return;
             CameraFovSystem.Instance.ZoomOut();
-            gameObject.SetActive(false);
+            SetActive(false);
         }
 
         public void OnClickWithLongTap()
@@ -29,7 +30,8 @@ namespace Snoweve.GazeInteraction
         public void SetActive(bool active)
         {
             gameObject.SetActive(active);
-            GazeInteraction.Instance.isDetected = true;
+            if(active)return;
+            GazeInteraction.Instance.ResetDetection();
         }
     }
 }
