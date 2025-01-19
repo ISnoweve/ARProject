@@ -1,6 +1,7 @@
 ﻿using System;
 using General.Interface;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Snoweve.GazeInteraction
 {
@@ -10,7 +11,7 @@ namespace Snoweve.GazeInteraction
         public bool canClick;
         public bool isRightObjectToClick;
         public string content;
-
+        public UnityEvent gameFinish; 
         private void Awake()
         {
             canClick = false;
@@ -26,6 +27,8 @@ namespace Snoweve.GazeInteraction
                 Debug.Log("Right Item Clicked");
                 canClick = false;
                 QuadTouchBehaviour.Instance.SetActive(true);
+                gameFinish?.Invoke();
+
             }
             else
             {

@@ -9,7 +9,7 @@ public class DialogBoxCtr : MonoBehaviour
     public string charaterID;
     public CanvasGroup cg;
     public TMP_Text dialog;
-
+    public bool assingToSystem = true;
     private bool shown = false;
 
     internal delegate void DialogBoxEvent();
@@ -23,6 +23,7 @@ public class DialogBoxCtr : MonoBehaviour
 
     private void Awake()
     {
+        if(assingToSystem)
         DialogBoxsManager.instance.AddDialogBox(this);
     }
 
@@ -33,7 +34,7 @@ public class DialogBoxCtr : MonoBehaviour
 
     }
     
-    internal void ShowDialog(string text)
+    public void ShowDialog(string text)
     {
         Debug.Log(text);
         dialog.text = text;

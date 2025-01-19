@@ -66,12 +66,6 @@
 [Dialog:3]接下來我們就到他們前往的風神廟看看吧。
 [End]
 
-[Start:ZoomHaveNoObj]
-[Ani:WellUI]
-[Dialog:0]
-[End]
-
-
 [Start:TempleStart]
 [Ani:WellOut]
 [Dialog:4]剛剛官員進入了風神廟了，可是你知道以前風神廟，是比現在大很多的嗎？
@@ -98,10 +92,47 @@
 
 [Start:TempleGameInfo]
 [Ani:WellIn]
-[Dialog:0]接下來，我們來找找官員在哪吧。　
+[Dialog:0]對了，我們來找一下官員是不是在公館內吧。
 [End]
 
 [Start:WellUITesting]
 [Ani:WellUI]
 [Dialog:0]WellUITesting。　
+[End]
+
+[Start:NoOfficalFind]
+[Ani:WellUI]
+[Dialog:0]好像沒看到官員呢。
+[End]
+
+[Start:FindOffical]
+[Ani:WellUI]
+[Dialog:2]找到了，他果然在公館內呢。
+[End]
+
+
+[Start:FindedOffical]
+[Ani:WellIn]
+[Dialog:3]你知道為什麼官員需要先住在這個公館嗎?
+[Dialog:4]因為當時船隻依賴季風航行，官員每年僅能隨東北季風來臺、隨西南季風回大陸。
+[Dialog:3.5]因此，官員來臺上任或卸任返鄉時，常需提前數月抵達或滯留，
+[Dialog:4]在蔣元樞增建公館後，官員可住於風神廟，待上任日乘轎經南河街入府署。
+[Dialog:4]在而在日治時期的大正七年（1918年），原風神廟後方所有殿舍及公館被拆毀，
+[Dialog:4]後來在大正十三年（1924年）經當地士紳集資重建而，便成為今日所見的風神廟。
+[Dialog:4]目前還到官員就任還有一段時間呢，就讓官員好好休息，我們去看看另一個地方吧。
+[End]
+
+
+
+[Start:BridgeIntro]
+[Ani:WellOut2]
+[Dialog:4.5]這邊看來什麼都沒有吧，其實以前這馬路下，就是以前的南河港呢，
+[Dialog:4]看的比說皂清楚，那我們再次回到過去看吧。
+[End]
+
+[Start:BridgeIntro2]
+[Ani:WellIn2]
+[Dialog:3]這安瀾橋和南河港，是昔日府城的重要孔道，
+[Dialog:4]可以看到人和貨物不停來回，很像現今的繁忙十字路口呢。
+[Dialog:0]但好像有些人在河上和橋上站著不動呢，是有什麼困擾嗎？ 我們幫他們一下吧。
 [End]

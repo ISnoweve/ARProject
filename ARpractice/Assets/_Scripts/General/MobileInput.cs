@@ -59,7 +59,7 @@ namespace General
                     Ray ray = Camera.main.ScreenPointToRay(touch.position);
                     RaycastHit hit;
 
-                    if (Physics.Raycast(ray, out hit, 10))
+                    if (Physics.Raycast(ray, out hit, 50))
                     {
                         IClickable clickable = hit.transform.GetComponent<IClickable>();
                         if (clickable != null)
