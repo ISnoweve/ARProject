@@ -19,6 +19,7 @@ namespace Snoweve.GazeInteraction
         {
             if(CameraFovSystem.Instance.isZooming)return;
             CameraFovSystem.Instance.ZoomOut();
+            DialogueSystem.instance.NextDialog();
             SetActive(false);
         }
 
