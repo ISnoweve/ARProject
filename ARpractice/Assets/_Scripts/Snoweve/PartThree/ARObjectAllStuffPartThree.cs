@@ -34,18 +34,22 @@ public class ARObjectAllStuffPartThree : MonoBehaviour
 
     public void OnAnimationEnd(string animationName)
     {
+        if (animationName == "OpeningEnd")
+        {
+            OpeningAnimationEnd();
+        }
     }
 
     private void PlayAnimation(string animationName)
     {
         animator.SetTrigger(animationName);
     }
-
-    private IEnumerator PlayAnimationOpening()
-    {
-        yield return new WaitForSeconds(eventTimeOpening);
-    }
     
+    public void OpeningAnimationEnd()
+    {
+        HandControl.instance.SetCanTouch(true);
+    }
+
     private IEnumerator PlayAnimationEnding()
     {
         yield return new WaitForSeconds(eventTimeEnding);
