@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,5 +51,10 @@ public class OfficalAnisControl : MonoBehaviour
     public void DebugTest()
     {
         Debug.Log("test");
+    }
+
+    internal void WellWalk()
+    {
+        wellCtr.Walk();
     }
 }

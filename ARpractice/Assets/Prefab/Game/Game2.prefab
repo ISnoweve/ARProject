@@ -354,8 +354,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7232693586243398950}
   - {fileID: 1423919552399306182}
+  - {fileID: 7232693586243398950}
   - {fileID: 1655286837675664132}
   - {fileID: 8520814062709727126}
   - {fileID: 8800409065216129802}
@@ -411,7 +411,7 @@ MonoBehaviour:
   teleControl: {fileID: 3553710639415022271}
   templeAniA: {fileID: 8959281786531472596}
   templeAniB: {fileID: 8459054225096385655}
-  TimeBeforeTeleApper: 6
+  TimeBeforeTeleApper: 8
   TimeBeforeTempleAAni: 2
   TimeBeforeTempleBAni: 18
   TimeBeforeTempleGame: 22

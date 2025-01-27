@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class WellCtr : MonoBehaviour
     public Material waterMateral;
     public Material wellMateral;
     public DialogBoxCtr dialogBoxCtr;
+    public Animator animator;
     public void Start()
     {
         waterMateral.SetFloat("_Amount", 0);
@@ -50,5 +52,10 @@ public class WellCtr : MonoBehaviour
     public void HideWater()
     {
         LeanTween.value(1, 0, 1f).setOnUpdate((float val) => waterMateral.SetFloat("_Amount", val));
+    }
+
+    internal void Walk()
+    {
+        animator.Play("Walk");
     }
 }

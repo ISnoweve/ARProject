@@ -24,10 +24,22 @@ public class OfficalsStage : MonoBehaviour
 
     public void AfterOfficalsOutDialog()
     {
-        officalAnisControl.WellApper();
+        //officalAnisControl.WellApper();
         LeanTween.delayedCall(0.5f,()=> DialogueSystem.instance.StartDialog("±µ©x_4"));
-        DialogueSystem.onSectionEnd += officalAnisControl.WellDisapper;
-        DialogueSystem.onSectionEnd += ()=> DialogueSystem.onSectionEnd-=officalAnisControl.WellDisapper;
+      
+       
+
+    }
+
+    public void AfterOfficalsOutDialogFinish()
+    {
+
+        officalAnisControl.WellWalk();
+    }
+
+    public void WellDisapper()
+    {
+        officalAnisControl.WellDisapper();
 
     }
 }

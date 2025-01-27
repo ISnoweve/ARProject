@@ -49,6 +49,7 @@ MonoBehaviour:
   waterMateral: {fileID: 2100000, guid: 200cf40529bba7242a4ce9fba40fd8e9, type: 2}
   wellMateral: {fileID: 2100000, guid: cccb3a2941709294b88d6691ebbb69ea, type: 2}
   dialogBoxCtr: {fileID: 3465659931343094648}
+  animator: {fileID: 1234205723636711614}
 --- !u!1001 &451728524788645055
 PrefabInstance:
   m_ObjectHideFlags: 0

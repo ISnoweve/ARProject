@@ -16,6 +16,11 @@ public class TempleStage : MonoBehaviour
     public UnityEvent findGame;
     public UnityEvent findGameEnd;
 
+    private void Start()
+    {
+        WellIntro();
+    }
+
     [ContextMenu("WellIntro")]
     public void WellIntro()
     {
@@ -29,7 +34,7 @@ public class TempleStage : MonoBehaviour
     {
         teleControl.gameObject.SetActive(false);
         wellsCtr.InWellApper();
-        LeanTween.delayedCall(2, () => DialogueSystem.instance.StartDialog("TempleStart"));
+       // LeanTween.delayedCall(2, () => DialogueSystem.instance.StartDialog("TempleStart"));
         LeanTween.delayedCall(TimeBeforeTempleAAni, () =>
         {
             DialogueSystem.instance.StartDialog("TempleInfo1");
