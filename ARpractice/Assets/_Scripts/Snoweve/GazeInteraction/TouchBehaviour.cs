@@ -27,8 +27,7 @@ namespace Snoweve.GazeInteraction
                 Debug.Log("Right Item Clicked");
                 canClick = false;
                 QuadTouchBehaviour.Instance.SetActive(true);
-                gameFinish?.Invoke();
-
+                QuadTouchBehaviour.Instance.GiveTouchBehaviour(this);
             }
             else
             {
