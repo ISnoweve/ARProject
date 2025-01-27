@@ -29,7 +29,7 @@ public class NPCBehaviour: MonoBehaviour , IClickable
             //complete mission
             Debug.Log("Complete Mission");
             HandControl.instance.CompleteMission();
-            //ARObjectAllStuffPartThree.Instance.IncreaseMissionCount();
+            ARObjectAllStuffPartThree.Instance.IncreaseMissionCount();
         }
         else
         {

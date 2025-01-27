@@ -413,8 +413,8 @@ MonoBehaviour:
   templeAniB: {fileID: 8459054225096385655}
   TimeBeforeTeleApper: 8
   TimeBeforeTempleAAni: 2
-  TimeBeforeTempleBAni: 18
-  TimeBeforeTempleGame: 22
+  TimeBeforeTempleBAni: 16
+  TimeBeforeTempleGame: 20
   findGame:
     m_PersistentCalls:
       m_Calls:

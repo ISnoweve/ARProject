@@ -65,9 +65,6 @@ public class TempleStage : MonoBehaviour
             DialogueSystem.instance.StartDialog("TempleGameInfo");
             findGame?.Invoke();
         });
-
-
-
     }
 
     public void GameEnd()
