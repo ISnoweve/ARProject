@@ -8,15 +8,18 @@ public class HandControl : MonoBehaviour
     public MissonBehaviour missionBehaviour;
     public NPCBehaviour Npc;
     public bool isHandActive;
+    public bool canTouch;
     
     private void Awake()
     {
         instance = this;
         isHandActive = false;
+        canTouch = false;
     }
 
     public void GetMissionBehaviour(MissonBehaviour misson)
     {
+        if(!canTouch)return;
         if(isHandActive)return;
         missionBehaviour = misson;
         isHandActive = true;
@@ -36,5 +39,10 @@ public class HandControl : MonoBehaviour
         missionBehaviour.gameObject.SetActive(false);
         missionBehaviour = null;
         isHandActive = false;
+    }
+    
+    public void SetCanTouch(bool value)
+    {
+        canTouch = value;
     }
 }
