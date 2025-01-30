@@ -122,6 +122,7 @@ Material:
     - _Metalic: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _OrgY: 0
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -137,9 +138,9 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
-    - _fade: 18.8
+    - _fade: 17
     - _fadeDetail: 2580.64
-    - _fadeDistance: 20
+    - _fadeDistance: 15.2
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Center: {r: 0, g: 0, b: 0, a: 0}
