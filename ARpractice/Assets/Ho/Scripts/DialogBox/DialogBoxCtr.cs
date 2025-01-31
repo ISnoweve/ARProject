@@ -23,14 +23,22 @@ public class DialogBoxCtr : MonoBehaviour
 
     private void Awake()
     {
-        if(assingToSystem)
-        DialogBoxsManager.instance.AddDialogBox(this);
+       
     }
+    private void OnEnable()
+    {
+
+        if (assingToSystem)
+            DialogBoxsManager.instance.AddDialogBox(this);
+
+    }
+
+
 
     private void OnDisable()
     {
-
-      //  DialogBoxsManager.instance.DelectDialogBox(charaterID);
+        if (assingToSystem)
+            DialogBoxsManager.instance.DelectDialogBox(charaterID);
 
     }
     

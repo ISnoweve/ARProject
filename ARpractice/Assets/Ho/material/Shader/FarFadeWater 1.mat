@@ -89,7 +89,7 @@ Material:
     - _fadeDetail: 2663
     - _fadeDistance: 65.4
     m_Colors:
-    - _Center: {r: 0, g: 0, b: -1.319, a: 0}
+    - _Center: {r: 0, g: 0, b: 0, a: 0}
     - _DepthColor: {r: 0.25178, g: 0.54671323, b: 0.7735849, a: 0}
     - _ShollowWaterColor: {r: 0, g: 0, b: 0, a: 1}
     - _WaterColor: {r: 0.1662958, g: 0.8423618, b: 0.9528302, a: 0}
