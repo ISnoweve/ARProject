@@ -1,6 +1,7 @@
 ﻿using System;
 using General.Interface;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCBehaviour: MonoBehaviour , IClickable
 {
@@ -9,6 +10,7 @@ public class NPCBehaviour: MonoBehaviour , IClickable
     public string rightContent;
     public string wrongContent;
     public string emptyContent;
+    public UnityEvent wornItem, rightItem, emptyItem;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class NPCBehaviour: MonoBehaviour , IClickable
         {
             Debug.Log("No Item");
             //Get empty. Talk about Mission again maybe?
+            emptyItem.Invoke();
             return;
         }
 
@@ -29,11 +32,13 @@ public class NPCBehaviour: MonoBehaviour , IClickable
             //complete mission
             Debug.Log("Complete Mission");
             HandControl.instance.CompleteMission();
+            rightItem.Invoke();
             //ARObjectAllStuffPartThree.Instance.IncreaseMissionCount();
         }
         else
         {
             Debug.Log("Wrong Item");
+            wornItem.Invoke();
             //wrong mission item for me, Talk Something i guess ?
         }
     }
