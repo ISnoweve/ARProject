@@ -15,6 +15,7 @@ public class DialogBoxCtr : MonoBehaviour
     internal delegate void DialogBoxEvent();
     internal event DialogBoxEvent OnShowDialog;
     internal event DialogBoxEvent OnHideDialog;
+    
     private void Start()
     {
         cg.alpha = 0;
@@ -39,7 +40,7 @@ public class DialogBoxCtr : MonoBehaviour
     {
         if (assingToSystem)
             DialogBoxsManager.instance.DelectDialogBox(charaterID);
-
+        LeanTween.cancel(gameObject);
     }
     
     public void ShowDialog(string text)
@@ -49,7 +50,7 @@ public class DialogBoxCtr : MonoBehaviour
         if (shown)
             return;
         shown = true;
-        LeanTween.value(0, 1, 0.5f).setOnUpdate((float val) => cg.alpha = val);
+        LeanTween.value(gameObject,0, 1, 0.5f).setOnUpdate((float val) => cg.alpha = val);
         OnShowDialog?.Invoke();
     }
     internal void HideDialog()
@@ -57,7 +58,7 @@ public class DialogBoxCtr : MonoBehaviour
         if (!shown)
             return;
         shown = false;
-        LeanTween.value(1, 0, 0.5f).setOnUpdate((float val) => cg.alpha = val);
+        LeanTween.value(gameObject, 1, 0, 0.5f).setOnUpdate((float val) => cg.alpha = val);
         OnHideDialog?.Invoke();
     }
  

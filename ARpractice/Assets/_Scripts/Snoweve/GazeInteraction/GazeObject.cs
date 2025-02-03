@@ -14,15 +14,33 @@ namespace Snoweve.GazeInteraction
 
         public void OnGaze()
         {
-            CameraFovSystem.Instance.ZoomIn();
+           // CameraFovSystem.Instance.ZoomIn();
             if (noItem)
             {
                 //NoItem Click Function
                 DialogueSystem.instance.StartDialog(content);
-                QuadTouchBehaviour.Instance.SetActive(true);
+                Debug.Log("NoItem");
+                //QuadTouchBehaviour.Instance.SetActive(true);
+                AndriodInput.instance.OnTouch += Touch;
                 return;
             }
             touchBehaviour.canClick = true;
+            touchBehaviour.OnClick();
+            
+        }
+
+
+        public void Touch()
+        {
+            if (CameraFovSystem.Instance.isZooming) return;
+           // CameraFovSystem.Instance.ZoomOut();
+            DialogueSystem.instance.NextDialog();
+            AndriodInput.instance.OnTouch -= Touch;
+            GazeInteraction.Instance.ResetDetection();
+            if(QuadTouchBehaviour.Instance.touchBehaviour != null)
+            {
+                QuadTouchBehaviour.Instance.touchBehaviour.gameFinish.Invoke();
+            }
         }
     }
 }

@@ -14,8 +14,16 @@ public class DialogBoxsManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-        dialogBoxs = new();
+        if (instance == null)
+        {
+            instance = this;
+            dialogBoxs = new();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
     }
 
@@ -68,20 +76,20 @@ public class DialogBoxsManager : MonoBehaviour
     {
         if (dialogBoxs.ContainsKey(dialogBoxCtr.charaterID))
         {
-            Debug.LogError("Same dialogBox key is existed");
+            Debug.LogError($"{dialogBoxCtr.charaterID} Same dialogBox key is existed");
             return;
         }
         dialogBoxs.Add(dialogBoxCtr.charaterID, dialogBoxCtr);
-
+        Debug.Log($"{dialogBoxCtr.charaterID} Dialog BoxAdd");
     }
     public void DelectDialogBox(string charaterID)
     {
-        Debug.Log("Removed");
+        Debug.Log($"{charaterID} Dialog Box Removed");
         if (!dialogBoxs.ContainsKey(charaterID))
         {
             return;
         }
-        //dialogBoxs.Remove(charaterID);
+        dialogBoxs.Remove(charaterID);
 
     }
 

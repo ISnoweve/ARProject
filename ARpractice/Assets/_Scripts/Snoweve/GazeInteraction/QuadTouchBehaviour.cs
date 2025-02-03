@@ -40,6 +40,7 @@ namespace Snoweve.GazeInteraction
         
         public void SetActive(bool active)
         {
+            Debug.Log($"TouchActive {active}");
             gameObject.SetActive(active);
             if(active)return;
             GazeInteraction.Instance.ResetDetection();

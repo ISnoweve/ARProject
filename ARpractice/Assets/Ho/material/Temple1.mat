@@ -139,8 +139,8 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     - _fade: 15
-    - _fadeDetail: 2580.64
-    - _fadeDistance: 22
+    - _fadeDetail: 724
+    - _fadeDistance: 20
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Center: {r: 0, g: 0, b: 0, a: 0}

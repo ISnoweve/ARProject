@@ -26,21 +26,29 @@ namespace Snoweve.GazeInteraction
                 DialogueSystem.instance.StartDialog(content);
                 Debug.Log("Right Item Clicked");
                 canClick = false;
-                QuadTouchBehaviour.Instance.SetActive(true);
+               // QuadTouchBehaviour.Instance.SetActive(true);
                 QuadTouchBehaviour.Instance.GiveTouchBehaviour(this);
+                AndriodInput.instance.OnTouch += Touch;
             }
             else
             {
                 //WrongItem Click Function
                 DialogueSystem.instance.StartDialog(content);
                 canClick = false;
-                QuadTouchBehaviour.Instance.SetActive(true);
+              //  QuadTouchBehaviour.Instance.SetActive(true);
             }
         }
 
         public void OnClickWithLongTap()
         {
             //
+        }
+
+        public void Touch()
+        {
+            DialogueSystem.instance.NextDialog();           
+            gameFinish.Invoke();            
+            AndriodInput.instance.OnTouch -= Touch;
         }
     }
 }
