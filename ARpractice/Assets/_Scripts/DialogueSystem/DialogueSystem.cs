@@ -37,7 +37,7 @@ public class DialogueSystem : MonoBehaviour
     public static event DialogueEndDelegate onSectionEnd;       // Invoke when one SECTION is played.
 
     private string currentCharactor = string.Empty;
-    private bool triggerNextDialog = false;
+    private bool canTriggerNextDialog = false;
 
     private void Initialize()
     {
@@ -54,7 +54,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void Update()
     {
-        if (!triggerNextDialog) return;
+        if (!canTriggerNextDialog) return;
 
         //triggerNextDialog = false;
         //NextDialog();
@@ -97,16 +97,28 @@ public class DialogueSystem : MonoBehaviour
     public int StartDialog(string dialogKey)
     {
         Debug.Log($"Set dialog via key\"<color=#09FF00>{dialogKey}</color>\".");
+       
         return SetDialog(sectionDictionary[dialogKey]);
     }
 
     public int StartDialog(int dialogIndex)
     {
+        Debug.Log("StartDialog");
         return SetDialog(dialogIndex);
+    }
+
+    public void TouchNextDialog()
+    {
+
+        if (!canTriggerNextDialog)
+            return;
+      NextDialog();
     }
 
     public int NextDialog()
     {
+      
+        Debug.Log("NextDialog");
         return SetDialog(currentIndex + 1);
     }
 
@@ -127,6 +139,7 @@ public class DialogueSystem : MonoBehaviour
         switch (dialog.tag)
         {
             case "Ani":
+               
                 currentCharactor = dialog.setting[0];
                 string animationName = "";
 
@@ -140,6 +153,7 @@ public class DialogueSystem : MonoBehaviour
                 break;
 
             case "Dialog":
+                
                 // Trigger animation event
                 OnDialogueSet?.Invoke(currentCharactor, dialog.content);
                 stringBuilder.Append($", ctx: \"<color=#C0D5FF>{dialog.content}</color>\"");
@@ -152,6 +166,7 @@ public class DialogueSystem : MonoBehaviour
 
                 if (_duration > 0)
                 {
+                    canTriggerNextDialog = false;
                     LeanTween.delayedCall(_duration, () =>
                     {
                         NextDialog();
@@ -160,12 +175,14 @@ public class DialogueSystem : MonoBehaviour
                 }
                 else
                 {
+                    canTriggerNextDialog = true;
                     OnDialogueFinish?.Invoke();
                 }
                 break;
 
             case "End":
                 onSectionEnd?.Invoke();
+                canTriggerNextDialog = false;
                 break;
 
             default:

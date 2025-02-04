@@ -46,7 +46,7 @@ Material:
     m_Floats:
     - _AlphaClip: 1
     - _AlphaToMask: 1
-    - _Amount: 0.75443125
+    - _Amount: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1

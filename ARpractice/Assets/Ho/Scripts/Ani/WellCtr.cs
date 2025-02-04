@@ -9,6 +9,7 @@ public class WellCtr : MonoBehaviour
     public Material wellMateral;
     public DialogBoxCtr dialogBoxCtr;
     public Animator animator;
+    public ParticleSystem apperEffect;
     public void Start()
     {
         waterMateral.SetFloat("_Amount", 0);
@@ -57,5 +58,15 @@ public class WellCtr : MonoBehaviour
     internal void Walk()
     {
         animator.Play("Walk");
+    }
+
+    public void ShowApperEffect()
+    {
+        apperEffect.Play();
+    }
+
+    public void StopApperEffect()
+    {
+        apperEffect.Stop();
     }
 }

@@ -21,7 +21,12 @@ namespace Snoweve.GazeInteraction
                 DialogueSystem.instance.StartDialog(content);
                 Debug.Log("NoItem");
                 //QuadTouchBehaviour.Instance.SetActive(true);
-                AndriodInput.instance.OnTouch += Touch;
+                AndriodInput.instance.EnableNextDialog(true);
+                DialogueSystem.onSectionEnd += Wrong;
+
+
+                
+               
                 return;
             }
             touchBehaviour.canClick = true;
@@ -30,17 +35,15 @@ namespace Snoweve.GazeInteraction
         }
 
 
-        public void Touch()
+        public void Wrong()
         {
-            if (CameraFovSystem.Instance.isZooming) return;
-           // CameraFovSystem.Instance.ZoomOut();
-            DialogueSystem.instance.NextDialog();
-            AndriodInput.instance.OnTouch -= Touch;
-            GazeInteraction.Instance.ResetDetection();
-            if(QuadTouchBehaviour.Instance.touchBehaviour != null)
+            if (QuadTouchBehaviour.Instance.touchBehaviour != null)
             {
                 QuadTouchBehaviour.Instance.touchBehaviour.gameFinish.Invoke();
             }
+            GazeInteraction.Instance.ResetDetection();
+            AndriodInput.instance.EnableNextDialog(false);
+            DialogueSystem.onSectionEnd -= Wrong;
         }
     }
 }

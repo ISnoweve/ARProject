@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3667450925224721609}
   - component: {fileID: 9222130232861889644}
   - component: {fileID: 7159113858011931785}
+  - component: {fileID: 7226674106639439585}
   m_Layer: 5
   m_Name: DialogUI
   m_TagString: Untagged
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7226674106639439585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821671815772466607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a054c9398ef1afa44bb2bea69fa99eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBoxCtr: {fileID: 3858355601569370670}
 --- !u!1 &2573008594476887803
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,15 +183,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9\u5167\u5BB9"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b6cf05dc1059ab04ca9c1e51e441ec62, type: 2}
-  m_sharedMaterial: {fileID: 8613289560256370950, guid: b6cf05dc1059ab04ca9c1e51e441ec62, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9da7f7bd96a8f174e87e5f11350bb341, type: 2}
+  m_sharedMaterial: {fileID: 8613289560256370950, guid: 9da7f7bd96a8f174e87e5f11350bb341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284243652
-  m_fontColor: {r: 0.7686275, g: 0.36862746, b: 0.36078432, a: 1}
+    rgba: 4279703416
+  m_fontColor: {r: 0.4716981, g: 0.091224626, b: 0.091224626, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -302,6 +316,7 @@ MonoBehaviour:
   charaterID: WellUI
   cg: {fileID: 6463091151386001768}
   dialog: {fileID: 500703122138118070}
+  assingToSystem: 1
 --- !u!1 &9066657341342120963
 GameObject:
   m_ObjectHideFlags: 0

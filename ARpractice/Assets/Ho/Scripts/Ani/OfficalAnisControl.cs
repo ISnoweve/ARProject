@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OfficalAnisControl : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class OfficalAnisControl : MonoBehaviour
     public InOutPortalRender offical;
     public InOutPortalRender localOffical;
     public FootStep footStep;
+    public UnityEvent OnAniEnd;
     public void OpenTele()
     {
         teleControl.PortalApper();
@@ -24,11 +26,12 @@ public class OfficalAnisControl : MonoBehaviour
     {
         footStep.Show();
     }
-        public void WellApper()
+    public void WellApper()
     {
         footStep.Hide();
         wellCtr.ShowWell();
-       LeanTween.delayedCall(1,()=> wellCtr.ShowWater());
+        wellCtr.ShowApperEffect();
+        LeanTween.delayedCall(1, () => wellCtr.ShowWater());
     }
 
     public void WellDisapper()
@@ -48,13 +51,16 @@ public class OfficalAnisControl : MonoBehaviour
         localOffical.Disapper();
     }
 
-    public void DebugTest()
+    public void AniEnd()
     {
-        Debug.Log("test");
+        Debug.Log("AniEnd");
+        OnAniEnd?.Invoke();
     }
 
     internal void WellWalk()
     {
         wellCtr.Walk();
     }
+
+
 }

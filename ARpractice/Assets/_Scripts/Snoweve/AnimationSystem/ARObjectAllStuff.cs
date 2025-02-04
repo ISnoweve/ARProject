@@ -37,34 +37,35 @@ public class ARObjectAllStuff : MonoBehaviour
         PlayAnimation("Spawn");
     }
 
-    public void OnAnimationEnd(string animationName)
-    {
+    //public void OnAnimationEnd(string animationName)
+    //{
+    //    Debug.LogError(animationName);
+    //    if (animationName == "Spawn")
+    //    {
+    //        StartCoroutine(PlayAnimationDialogOne());
+    //    }
 
-        if (animationName == "Spawn")
-        {
-            StartCoroutine(PlayAnimationDialogOne());
-        }
+    //    if (animationName == "DialogOne")
+    //    {
+    //        StartCoroutine(PlayAnimationDialogTwo());
+    //    }
 
-        if (animationName == "DialogOne")
-        {
-            StartCoroutine(PlayAnimationDialogTwo());
-        }
+    //    if (animationName == "DialogTwo")
+    //    {
+    //        StartCoroutine(PlayAnimationDialogThree());
+    //    }
 
-        if (animationName == "DialogTwo")
-        {
-            StartCoroutine(PlayAnimationDialogThree());
-        }
+    //    if (animationName == "DialogThree")
+    //    {
+           
+    //        StartCoroutine(PlayAnimationDialogFour());
+    //    }
 
-        if (animationName == "DialogThree")
-        {
-            StartCoroutine(PlayAnimationDialogFour());
-        }
-
-        if (animationName == "End")
-        {
-            Debug.LogError("End AHAHHHHHHHHHHHHHHHHHHHAHAHHA");
-        }
-    }
+    //    if (animationName == "End")
+    //    {
+    //        Debug.LogError("End AHAHHHHHHHHHHHHHHHHHHHAHAHHA");
+    //    }
+    //}
 
     private void PlayAnimation(string animationName)
     {
@@ -72,44 +73,44 @@ public class ARObjectAllStuff : MonoBehaviour
     }
 
     // LittleWell up hand animation and DialogOne talk
-    private IEnumerator PlayAnimationDialogOne()
-    {
+    //private IEnumerator PlayAnimationDialogOne()
+    //{
 
-        yield return new WaitForSeconds(eventTimeOne);
-        OnAnimationEnd("DialogOne");
-    }
+    //    yield return new WaitForSeconds(eventTimeOne);
+    //    OnAnimationEnd("DialogOne");
+    //}
 
-    // Paper spawning and DialogTwo talk
-    private IEnumerator PlayAnimationDialogTwo()
-    {
-        //LittleWell talk something
+    //// Paper spawning and DialogTwo talk
+    //private IEnumerator PlayAnimationDialogTwo()
+    //{
+    //    //LittleWell talk something
 
-        PlayAnimation("OfficeComeIn");
-        yield return new WaitForSeconds(eventTimeTwo);
-        OnAnimationEnd("DialogTwo");
-    }
+    //    PlayAnimation("OfficeComeIn");
+    //    yield return new WaitForSeconds(eventTimeTwo);
+    //    OnAnimationEnd("DialogTwo");
+    //}
 
-    private IEnumerator PlayAnimationDialogThree()
-    {
-        //Office and LocalOffice Talk something
-        yield return new WaitForSeconds(eventTimeOfficeTalk);
-        PlayAnimation("LocalOfficeAndOfficeLeave");
-        yield return new WaitForSeconds(eventTimeThree);
-        OnAnimationEnd("DialogThree");
-    }
+    //private IEnumerator PlayAnimationDialogThree()
+    //{
+    //    //Office and LocalOffice Talk something
+    //    yield return new WaitForSeconds(eventTimeOfficeTalk);
+    //    PlayAnimation("LocalOfficeAndOfficeLeave");
+    //    yield return new WaitForSeconds(eventTimeThree);
+    //    OnAnimationEnd("DialogThree");
+    //}
 
-    private IEnumerator PlayAnimationDialogFour()
-    {
-        //LittleWell last talk
-        Debug.LogError("LittleWell last talk");
-        yield return new WaitForSeconds(eventTimeFour);
-        //LeanTween.value(0,1,1).setOnUpdate((float value) =>
-        //{
-        //    teleport.SetFloat("_DissolveAmount", value);
-        //});
-        yield return new WaitForSeconds(eventTimeFour);
-        OnAnimationEnd("End");
-    }
+    //private IEnumerator PlayAnimationDialogFour()
+    //{
+    //    //LittleWell last talk
+    //    Debug.LogError("LittleWell last talk");
+    //    yield return new WaitForSeconds(eventTimeFour);
+    //    //LeanTween.value(0,1,1).setOnUpdate((float value) =>
+    //    //{
+    //    //    teleport.SetFloat("_DissolveAmount", value);
+    //    //});
+    //    yield return new WaitForSeconds(eventTimeFour);
+    //    OnAnimationEnd("End");
+    //}
 
     public void LittleWellTalk()
     {
