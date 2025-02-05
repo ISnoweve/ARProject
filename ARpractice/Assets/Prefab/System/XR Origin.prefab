@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6558127142805846285}
   - component: {fileID: 7328390437532918496}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GazeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

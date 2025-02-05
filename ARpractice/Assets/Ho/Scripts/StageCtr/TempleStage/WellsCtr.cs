@@ -19,8 +19,16 @@ public class WellsCtr : MonoBehaviour
     {
         step.Show();
         outWell.SetActive(true);
-        LeanTween.delayedCall(2, () => outWellCtr.ShowWell());
+        LeanTween.delayedCall(2, () =>
+        {
+            outWellCtr.ShowWell();
+            outWellCtr.ShowApperEffect();
+
+        });
+        
     }
+
+
 
     internal void InWellApper()
     {

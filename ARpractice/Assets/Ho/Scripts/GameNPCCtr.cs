@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameNPCCtr : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class GameNPCCtr : MonoBehaviour
     public string startLog;
     public string worngLog;
     public string correctLog;
-
+    public string noLog;
+    public UnityEvent InitEvent;
+    public Animator NpcAni;
     private void Start()
     {
         dialogBox=GetComponentInChildren<DialogBoxCtr>();
         ani=GetComponent<Animator>();
+        InitEvent.Invoke();
+        NpcAni.Play("Idle");
     }
 
     public void StartPlay()
@@ -27,6 +32,12 @@ public class GameNPCCtr : MonoBehaviour
         dialogBox.ShowDialog(worngLog);
     }
 
+    public void ShowNo()
+    {
+        dialogBox.ShowDialog(noLog);
+    }
+
+
     public void Correct()
     {
         dialogBox.ShowDialog(correctLog);
@@ -34,6 +45,8 @@ public class GameNPCCtr : MonoBehaviour
         {
             dialogBox.HideDialog();
             ani.Play("Walk");
+            NpcAni.Play("Move");
         });
+
     }
 }

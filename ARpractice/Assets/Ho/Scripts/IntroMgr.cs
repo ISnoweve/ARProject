@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Snoweve.GazeInteraction;
 using UnityEngine;
 
 public class IntroMgr : MonoBehaviour
@@ -10,7 +11,8 @@ public class IntroMgr : MonoBehaviour
 
     public void EnableIntros()
     {
-        Hints.instance.Show("對準有感嘆號的位置進行探索");
+        GazeInteraction.Instance.isDetected = false;
+        Hints.instance.Show("找出有感嘆號的位置並對準來進行探索");
         foreach (var intro in intros)
         {
             intro.EnableInteract();

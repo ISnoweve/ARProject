@@ -57,15 +57,25 @@ namespace General
                 if (touch.phase == TouchPhase.Began)
                 {
                     Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                    RaycastHit hit;
-
-                    if (Physics.Raycast(ray, out hit, 50))
+                    RaycastHit[] hits;
+                    hits = Physics.RaycastAll(ray, 50);
+                    if (hits.Length>0)
                     {
-                        IClickable clickable = hit.transform.GetComponent<IClickable>();
-                        if (clickable != null)
+                        IClickable clickable;
+                        foreach (var hit in hits)
                         {
-                            clickable.OnClick();
-                        }
+                            if (!hit.transform.TryGetComponent<IClickable>(out clickable))
+                                continue;
+                            else
+                            {
+                                clickable.OnClick();
+                                break; 
+                            }                              
+                            
+
+                        }                         
+                       
+                       
                     }
 
                     Debug.DrawRay(ray.origin, ray.direction * 10, Color.red, 1);

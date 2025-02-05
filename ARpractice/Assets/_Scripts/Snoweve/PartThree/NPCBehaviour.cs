@@ -33,7 +33,7 @@ public class NPCBehaviour: MonoBehaviour , IClickable
             Debug.Log("Complete Mission");
             HandControl.instance.CompleteMission();
             rightItem.Invoke();
-            //ARObjectAllStuffPartThree.Instance.IncreaseMissionCount();
+            ARObjectAllStuffPartThree.Instance.IncreaseMissionCount();
         }
         else
         {

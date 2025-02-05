@@ -10,49 +10,81 @@ public class BridgeStage : MonoBehaviour
     public TeleControl teleControl;
     public float TimeBeforeTeleApper = 10;
     public float TimeBeforeGame = 3;
+  
     public UnityEvent GameStartEvent;
+    public IntroMgr introMgr;
     private void Start()
     {
-        WellIntro();
+        WellApper();
+
     }
 
-
-    [ContextMenu("WellIntro")]
-    public void WellIntro()
+    public void WellApper()
     {
         HandControl.instance.SetCanTouch(false);
         wellsCtr.OutWellApper();
-        LeanTween.delayedCall(4, () => DialogueSystem.instance.StartDialog("BridgeIntro"));
-        LeanTween.delayedCall(TimeBeforeTeleApper, () => teleControl.PortalApper());
+        InGazeCheck.instance.SetTargetKey("Stage3");
     }
 
 
-    [ContextMenu("StartStage")]
+
+    public void WellIntro()
+    {
+        DialogueSystem.instance.StartDialog("BridgeIntro");
+        AndriodInput.instance.EnableNextDialog(true);
+        DialogueSystem.onSectionEnd += TeleApper;
+
+    }
+    public void TeleApper()
+    {
+        DialogueSystem.onSectionEnd -= TeleApper;
+        AndriodInput.instance.EnableNextDialog(false);
+        teleControl.PortalApper();
+    }
+
     public void StartStage()
     {
         teleControl.gameObject.SetActive(false);
         wellsCtr.InWellApper();
 
         DialogueSystem.instance.StartDialog("BridgeIntro2");
-        LeanTween.delayedCall(TimeBeforeGame, () =>
-        {
-            GameStart();
-        });
-       
+        AndriodInput.instance.EnableNextDialog(true);
+        DialogueSystem.onSectionEnd += GameStart;
+        //LeanTween.delayedCall(TimeBeforeGame, () =>
+        //{
+        //    GameStart();
+        //});
+
     }
 
     public void GameStart()
     {
+        Hints.instance.Show("點擊困擾的人尋找中的物品後，再點擊對應的人歸還");
+        DialogueSystem.onSectionEnd -= GameStart;
         HandControl.instance.SetCanTouch(true);
         Debug.Log("GameStart");
         GameStartEvent?.Invoke();
     }
 
-    [ContextMenu("GameEnd")]
+
     public void GameEnd()
     {
-        HandControl.instance.SetCanTouch(false);
-        Debug.Log("GameEnd");
-        DialogueSystem.instance.StartDialog("BridgeAfterGame");
+        LeanTween.delayedCall(3, () =>
+        {
+            Hints.instance.Hide();
+            HandControl.instance.SetCanTouch(false);
+            Debug.Log("GameEnd");
+            DialogueSystem.instance.StartDialog("BridgeAfterGame");
+            AndriodInput.instance.EnableNextDialog(true);
+            DialogueSystem.onSectionEnd += StartIntro;
+        });
+    
+    }
+
+    public void StartIntro()
+    {
+        DialogueSystem.onSectionEnd -= StartIntro;  
+        AndriodInput.instance.EnableNextDialog(false);
+        introMgr.EnableIntros();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IntroObject : MonoBehaviour
 {
-    public   Collider collider;
+    public Collider collider;
     public CanvasGroup cg;
     private void Awake()
     {

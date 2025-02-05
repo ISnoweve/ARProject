@@ -11,6 +11,7 @@ public class OfficalAnisControl : MonoBehaviour
     public InOutPortalRender offical;
     public InOutPortalRender localOffical;
     public FootStep footStep;
+    public ShipManCtr shipManCtr;
     public UnityEvent OnAniEnd;
     public void OpenTele()
     {
@@ -62,5 +63,14 @@ public class OfficalAnisControl : MonoBehaviour
         wellCtr.Walk();
     }
 
+    public void ShipManIdle()
+    {
+        shipManCtr.Idle();
+    }
+
+    public void ShipManMove()
+    {
+        shipManCtr.Move();
+    }
 
 }
