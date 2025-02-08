@@ -30,7 +30,7 @@ public class DialogBoxsManager : MonoBehaviour
     private void OnEnable()
     {
         DialogueSystem.OnDialogueSet += ShowDialog;
-        DialogueSystem.onSectionEnd += HideAllDialog;
+        DialogueSystem.onSectionEndNotReset += HideAllDialog;
 
     }
 
@@ -38,7 +38,7 @@ public class DialogBoxsManager : MonoBehaviour
     private void OnDisable()
     {
         DialogueSystem.OnDialogueSet -= ShowDialog;
-        DialogueSystem.onSectionEnd -= HideAllDialog;
+        DialogueSystem.onSectionEndNotReset -= HideAllDialog;
     }
 
     internal void ShowDialog(string charaterID, string content)
@@ -94,11 +94,11 @@ public class DialogBoxsManager : MonoBehaviour
     }
 
 
-    private void HideAllDialog()
+    internal void HideAllDialog()
     {
         foreach (var dialog in dialogBoxs)
         {
-            dialog.Value.HideDialog();
+            dialog.Value.OnHideAllDialog();
         }
     }
 

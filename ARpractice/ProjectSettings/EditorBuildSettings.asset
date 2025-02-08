@@ -26,15 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ho/Scene/ARMenu.unity
     guid: 9a1d58e1a8dd09e46958a7183ab0780c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ho/Scene/ARDemo1.unity
     guid: b8cfa3ecd85a9f24284040c708ac49d8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ho/Scene/ARDemo2.unity
     guid: 5711ea1c71f59484fb0bc5b43cc6df43
-  - enabled: 1
+  - enabled: 0
     path: Assets/Ho/Scene/ARDemo3.unity
     guid: b424468208dc5c74fa01772817de6932
+  - enabled: 1
+    path: Assets/Ho/Scene/ARDemo.unity
+    guid: 5d767c4dfdaec044c8ffa1b2e6140a10
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: fb79c8a21e3282e4a92a51ce7356f063, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 5636df1b72005cb4eb50a4fc2e41cf39, type: 2}

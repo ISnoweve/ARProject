@@ -15,6 +15,8 @@ public class FootStep : MonoBehaviour
 
     public void Show()
     {
+        footVFX.SetFloat("_AmountStart", 0);
+        footVFX.SetFloat("_AmountEnd", 1);
         LeanTween.value(0, 1, 2).setOnUpdate((float val)=> footVFX.SetFloat("_AmountStart", val));
 
     }

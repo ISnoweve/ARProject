@@ -9,7 +9,7 @@ public class OfficalsStage : MonoBehaviour
     public OfficalAnisControl officalAnisControl;
     public Animator animator;
 
-    public void WaitGazeIn()
+    public void Start()
     {
         InGazeCheck.instance.SetTargetKey("WellStartStage1");
 

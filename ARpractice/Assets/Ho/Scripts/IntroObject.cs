@@ -18,4 +18,12 @@ public class IntroObject : MonoBehaviour
         collider.enabled = true;
         cg.alpha = 1;
     }
+    public void FinishInteract()
+    {
+        collider.enabled = false;
+        cg.alpha = 0;
+        SoundPlayer.instance.PlayClick();   
+    }
+
+
 }

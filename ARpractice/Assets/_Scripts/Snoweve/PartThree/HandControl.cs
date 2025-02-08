@@ -25,8 +25,9 @@ public class HandControl : MonoBehaviour
         isHandActive = true;
         misson.canTouch = false;
         misson.gameObject.transform.SetParent(Camera.main.transform);
-        misson.gameObject.transform.localPosition = new Vector3(0.4f, -0.5f, 1f);
-        misson.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        misson.gameObject.transform.position = transform.position;
+        misson.gameObject.transform.rotation = transform.rotation;
+        misson.gameObject.transform.localScale = new Vector3(0.11f, 0.11f, 0.11f);
     }
     
     public MissonBehaviour GetMissionBehaviour()

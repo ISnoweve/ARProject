@@ -47,6 +47,7 @@ public class GameNPCCtr : MonoBehaviour
             ani.Play("Walk");
             NpcAni.Play("Move");
         });
+        SoundPlayer.instance.PlayCorrect();
 
     }
 }

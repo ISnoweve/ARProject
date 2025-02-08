@@ -21,26 +21,41 @@ namespace Snoweve.GazeInteraction
 
         void Update()
         {
-            RaycastHit hit;
+            
             if(CameraFovSystem.Instance.isZooming)return;
-            if (Physics.Raycast(transform.position, transform.forward, out hit))
+            if (isDetected)
+                return;
+            var hits = Physics.RaycastAll(transform.position, transform.forward,50);
+
+            bool hitted=false;
+            GazeObject gazeObject;
+            foreach (var hit in hits)
             {
-                if (hit.collider.GetComponent<GazeObject>() != null && !isDetected)
+                if(hit.collider.TryGetComponent<GazeObject>(out gazeObject))
                 {
-                    Debug.Log("Gaze Detected");
-                    gazeObject = hit.collider.GetComponent<GazeObject>();
+                    hitted = true;
+                    Debug.Log("Gaze Detected");                   
                     detectionSlider.gameObject.SetActive(true);
                     detectionSlider.value = detectionTime / observationTime;
                     detectionTime += Time.deltaTime;
-                    if(detectionTime >= observationTime) 
-                    { 
+                    if (detectionTime >= observationTime)
+                    {
                         detectionSlider.gameObject.SetActive(false);
                         isDetected = true;
                         gazeObject.OnGaze();
                     }
+                    break;
                 }
             }
-            else
+
+            //if (Physics.Raycast(transform.position, transform.forward, out hit))
+            //{
+            //    if (hit.collider.GetComponent<GazeObject>() != null && !isDetected)
+            //    {
+                   
+            //    }
+            //}
+            if(!hitted)            
             {
                 detectionSlider.gameObject.SetActive(false);
                 detectionTime = 0.0f;

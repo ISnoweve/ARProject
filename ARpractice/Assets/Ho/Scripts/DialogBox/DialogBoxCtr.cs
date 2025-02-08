@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,6 +16,7 @@ public class DialogBoxCtr : MonoBehaviour
     internal delegate void DialogBoxEvent();
     internal event DialogBoxEvent OnShowDialog;
     internal event DialogBoxEvent OnHideDialog;
+    public bool hideOnAllHide = true;
     
     private void Start()
     {
@@ -61,5 +63,15 @@ public class DialogBoxCtr : MonoBehaviour
         LeanTween.value(gameObject, 1, 0, 0.5f).setOnUpdate((float val) => cg.alpha = val);
         OnHideDialog?.Invoke();
     }
- 
+
+    internal void OnHideAllDialog()
+    {
+        if (!hideOnAllHide)
+            return;
+        if (!shown)
+            return;
+        shown = false;
+        LeanTween.value(gameObject, 1, 0, 0.5f).setOnUpdate((float val) => cg.alpha = val);
+        OnHideDialog?.Invoke();
+    }
 }

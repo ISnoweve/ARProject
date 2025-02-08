@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using System.Text;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -32,9 +34,13 @@ public class DialogueSystem : MonoBehaviour
     public static event DialogueDelegate StartAnimation;
     public static event DialogueDelegate OnDialogueSet;
 
+
     public delegate void DialogueEndDelegate();
     public static event DialogueEndDelegate OnDialogueFinish;   // Invoke when one DIALOG is played.
     public static event DialogueEndDelegate onSectionEnd;       // Invoke when one SECTION is played.
+    public static event DialogueEndDelegate onSectionEndNotReset;
+    public static event DialogueEndDelegate OnClickNextDialog;
+
 
     private string currentCharactor = string.Empty;
     private bool canTriggerNextDialog = false;
@@ -51,7 +57,15 @@ public class DialogueSystem : MonoBehaviour
         InitSingleton();
         Initialize();
     }
-
+    private void OnEnable()
+    {
+        SceneManager.sceneUnloaded += ResetOnSceneLoad;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneUnloaded -= ResetOnSceneLoad;
+    }
+   
     private void Update()
     {
         if (!canTriggerNextDialog) return;
@@ -97,7 +111,7 @@ public class DialogueSystem : MonoBehaviour
     public int StartDialog(string dialogKey)
     {
         Debug.Log($"Set dialog via key\"<color=#09FF00>{dialogKey}</color>\".");
-       
+
         return SetDialog(sectionDictionary[dialogKey]);
     }
 
@@ -112,12 +126,13 @@ public class DialogueSystem : MonoBehaviour
 
         if (!canTriggerNextDialog)
             return;
-      NextDialog();
+        NextDialog();
+        OnClickNextDialog?.Invoke();
     }
 
     public int NextDialog()
     {
-      
+
         Debug.Log("NextDialog");
         return SetDialog(currentIndex + 1);
     }
@@ -139,7 +154,7 @@ public class DialogueSystem : MonoBehaviour
         switch (dialog.tag)
         {
             case "Ani":
-               
+
                 currentCharactor = dialog.setting[0];
                 string animationName = "";
 
@@ -153,7 +168,7 @@ public class DialogueSystem : MonoBehaviour
                 break;
 
             case "Dialog":
-                
+
                 // Trigger animation event
                 OnDialogueSet?.Invoke(currentCharactor, dialog.content);
                 stringBuilder.Append($", ctx: \"<color=#C0D5FF>{dialog.content}</color>\"");
@@ -182,6 +197,7 @@ public class DialogueSystem : MonoBehaviour
 
             case "End":
                 onSectionEnd?.Invoke();
+                onSectionEndNotReset?.Invoke();
                 canTriggerNextDialog = false;
                 break;
 
@@ -194,7 +210,11 @@ public class DialogueSystem : MonoBehaviour
         return currentIndex;
     }
 
-
+    public void ResetOnSceneLoad(Scene arg0)
+    {   
+        OnDialogueFinish = null;
+        onSectionEnd = null;
+    }
 }
 
 [System.Serializable]

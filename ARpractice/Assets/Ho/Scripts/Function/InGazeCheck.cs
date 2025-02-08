@@ -7,7 +7,7 @@ using UnityEngine;
 public class InGazeCheck : MonoBehaviour
 {
     internal static InGazeCheck instance;
-    private string targetKey;
+    public string targetKey;
     internal delegate void GazeEvent();
     private GazeEvent OnCheckGaze;
 

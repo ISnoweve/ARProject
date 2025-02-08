@@ -47,7 +47,7 @@ namespace Snoweve.GazeInteraction
         public void Touch()
         {
             DialogueSystem.instance.NextDialog();           
-            gameFinish.Invoke();            
+            gameFinish?.Invoke();            
             AndriodInput.instance.OnTouch -= Touch;
         }
     }

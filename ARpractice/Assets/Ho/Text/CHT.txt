@@ -111,12 +111,12 @@
 
 [Start:FindOffical]
 [Ani:WellUI]
-[Dialog:0]找到了，的官員果然在公館內。
+[Dialog:0]找到了，官員果然在公館內。
 [End]
 
 
 [Start:FindedOffical]
-[Ani:WellIn]
+[Ani:WellInR]
 [Dialog:0]你知道為什麼官員需要先住在這個公館嗎?
 [Dialog:0]因為當時船隻依賴季風航行，官員每年僅能隨東北季風來臺、隨西南季風回大陸。
 [Dialog:0]因此，官員來臺上任或卸任返鄉時，常需提前數月抵達或滯留，
@@ -200,18 +200,18 @@
 
 [Start:峴石亭]
 [Ani:WellUI] 
-[Dialog:0]風神廟兩旁石亭的之一，原被認為是鐘樓，後來經考證後得知是接官亭建築群的碑亭之一。
+[Dialog:0]峴石亭，風神廟兩旁石亭的之一，原被認為是鐘樓，經考證後得知是接官亭的碑亭之一。
 [Dialog:0]碑亭上刻有「峴石」二字，訴說一則百姓感念父母官的歷史故事。
 [End]
 
 [Start:棠蔭亭]
 [Ani:WellUI] 
-[Dialog:0]風神廟兩旁石亭的之一，原被認為是鼓樓，後來經考證後得知是接官亭建築群的碑亭之一。
+[Dialog:0]棠蔭亭，風神廟兩旁石亭的之一，原被認為是鼓樓，經考證後得知是接官亭的碑亭之一。
 [Dialog:0]碑亭上刻有「棠蔭」二字，訴說一則百姓感念父母官的歷史故事。
 [End]
 
 
-[Start:BridgeIntro]
+[Start:BridgeIntro3]
 [Ani:WellUI] 
 [Dialog:0]安瀾橋是清領期間跨越南河港道，進出大西門的交通要道。
 [Dialog:0]在清領期間經歷四次修建，得證明安瀾橋的重要性。
@@ -223,7 +223,7 @@
 [End]
 
 
-[Start:WellIntro]
+[Start:WellIntro3]
 [Ani:WellUI] 
 [Dialog:0]小井兒是神農街的小神靈，原身是神農街的井口。
 [Dialog:0]在二戰期間水仙尊王復原其中之一被波及炸燬的井口變化而來。

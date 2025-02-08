@@ -1,6 +1,7 @@
 ﻿using System;
 using General.Interface;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Snoweve.GazeInteraction
 {
@@ -11,9 +12,10 @@ namespace Snoweve.GazeInteraction
         [Header("If there is no TouchBehaviour, write this parameter")]
 		public bool noItem;
         public string content;
-
+        public UnityEvent OnGazed;
         public void OnGaze()
         {
+            OnGazed?.Invoke();
            // CameraFovSystem.Instance.ZoomIn();
             if (noItem)
             {

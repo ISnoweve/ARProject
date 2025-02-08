@@ -12,7 +12,7 @@ public class IntroMgr : MonoBehaviour
     public void EnableIntros()
     {
         GazeInteraction.Instance.isDetected = false;
-        Hints.instance.Show("找出有感嘆號的位置並對準來進行探索");
+        Hints.instance.Show("對準有圓點的位置來進行探索");
         foreach (var intro in intros)
         {
             intro.EnableInteract();

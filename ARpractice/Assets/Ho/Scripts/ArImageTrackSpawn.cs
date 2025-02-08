@@ -10,15 +10,24 @@ public class ArImageTrackSpawn : MonoBehaviour
     private ARTrackedImageManager _imageManager;
     private ARSession aRSession;
 
-    public GameObject SpawnPre;
+    public ARObjList aRObjList;
     private GameObject spwanedGameObjects;
+    private static Dictionary<string, GameObject> aRDict;
 
     private void Awake()
     {
+        
         _imageManager = FindObjectOfType<ARTrackedImageManager>();
 
-        aRSession=FindObjectOfType<ARSession>();
-       
+        aRSession = FindObjectOfType<ARSession>();
+        if (aRDict == null)
+        {
+            aRDict = new Dictionary<string, GameObject>();
+            foreach (var arobj in aRObjList.aRObjs)
+            {
+                aRDict.Add(arobj.key, arobj.obj);
+            }
+        }
     }
 
     private void OnEnable()
@@ -60,15 +69,15 @@ public class ArImageTrackSpawn : MonoBehaviour
 
     private void UpdateImage(ARTrackedImage aRTrackedImage)
     {
-        if (aRTrackedImage.referenceImage.name != "Test")
-            return;
         if (spwanedGameObjects != null)
             return;
+        if (!aRDict.ContainsKey(aRTrackedImage.referenceImage.name))
+            return;
+        var pre = aRDict[aRTrackedImage.referenceImage.name];
+        spwanedGameObjects = Instantiate(pre, aRTrackedImage.transform.position, aRTrackedImage.transform.rotation);
+        StartCoroutine(SetPos(aRTrackedImage));
 
-            spwanedGameObjects = Instantiate(SpawnPre, aRTrackedImage.transform.position, aRTrackedImage.transform.rotation);
-            StartCoroutine(SetPos(aRTrackedImage));
-        
-        
+
 
         //if (aRTrackedImage.referenceImage.name != arObject.name)
         //    return;
@@ -93,17 +102,35 @@ public class ArImageTrackSpawn : MonoBehaviour
         spwanedGameObjects.transform.rotation = aRTrackedImage.transform.rotation;
         spwanedGameObjects.AddComponent<ARAnchor>();
         spwanedGameObjects.SetActive(true);
+        SoundPlayer.instance.PlayBGM();
     }
 
-    [ContextMenu("TestSpawn")]
-    public void TestSpawn()
+    [ContextMenu("TestSpawn1")]
+    public void TestSpawn1()
+    {
+        TestSpawn("Game1");
+    }
+    [ContextMenu("TestSpawn2")]
+    public void TestSpawn2()
+    {
+        TestSpawn("Game2");
+    }
+    [ContextMenu("TestSpawn3")]
+    public void TestSpawn3()
+    {
+        TestSpawn("Game3");
+    }
+
+
+    public void TestSpawn(string key)
     {
         if (spwanedGameObjects == null)
         {
-            spwanedGameObjects = Instantiate(SpawnPre);
+            spwanedGameObjects = Instantiate(aRDict[key]);
             spwanedGameObjects.transform.position = Vector3.zero;
             spwanedGameObjects.transform.rotation = Quaternion.identity;
             spwanedGameObjects.AddComponent<ARAnchor>();
+            SoundPlayer.instance.PlayBGM();
             spwanedGameObjects.SetActive(true);
         }
     }

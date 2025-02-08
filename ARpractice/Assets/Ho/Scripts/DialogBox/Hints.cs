@@ -9,6 +9,7 @@ public class Hints : MonoBehaviour
     private void Awake()
     {
            instance = this;
+        Hide();
     }
 
     public void Show(string hint)

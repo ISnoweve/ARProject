@@ -37,6 +37,7 @@ public class BridgeStage : MonoBehaviour
     }
     public void TeleApper()
     {
+        Hints.instance.Show("進入傳送門");
         DialogueSystem.onSectionEnd -= TeleApper;
         AndriodInput.instance.EnableNextDialog(false);
         teleControl.PortalApper();
@@ -46,7 +47,7 @@ public class BridgeStage : MonoBehaviour
     {
         teleControl.gameObject.SetActive(false);
         wellsCtr.InWellApper();
-
+        Hints.instance.Hide();
         DialogueSystem.instance.StartDialog("BridgeIntro2");
         AndriodInput.instance.EnableNextDialog(true);
         DialogueSystem.onSectionEnd += GameStart;

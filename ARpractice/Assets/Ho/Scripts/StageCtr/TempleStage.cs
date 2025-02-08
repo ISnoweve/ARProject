@@ -32,9 +32,11 @@ public class TempleStage : MonoBehaviour
     public void WellIntro()
     {
         wellsCtr.outWellCtr.StopApperEffect();
+        LeanTween.delayedCall(1, () => {         
         DialogueSystem.instance.StartDialog("TempleStart");
         AndriodInput.instance.EnableNextDialog(true);
         DialogueSystem.onSectionEnd += PortalApper;
+        });
     }
 
 
@@ -45,7 +47,7 @@ public class TempleStage : MonoBehaviour
         DialogueSystem.onSectionEnd -= PortalApper;
         DialogueSystem.instance.StartDialog("TempleStartKeep");
         teleControl.PortalApper();
-     
+
     }
 
 
@@ -60,39 +62,44 @@ public class TempleStage : MonoBehaviour
     }
 
     private void FirstDrop()
-    {        
+    {
         Debug.Log("TempleAAni");
         DialogueSystem.instance.StartDialog("TempleInfo1");
+        AndriodInput.instance.EnableNextDialog(true);
         templeAniA.Play("Drop");
         DialogueSystem.onSectionEnd += SecondTempleDrop;
-        AndriodInput.instance.EnableNextDialog(true);
     }
 
     public void SecondTempleDrop()
     {
         AndriodInput.instance.EnableNextDialog(false);
         DialogueSystem.onSectionEnd -= SecondTempleDrop;
-        DialogueSystem.instance.StartDialog("TempleInfo2");
-      
-        templeAniB.Play("Drop");
-        Debug.Log("GameIntro");
-        DialogueSystem.onSectionEnd += GameIntro;
-        AndriodInput.instance.EnableNextDialog(true);
+        LeanTween.delayedCall(2, () =>
+            {
+                DialogueSystem.instance.StartDialog("TempleInfo2");
+                AndriodInput.instance.EnableNextDialog(true);
+                templeAniB.Play("Drop");
+                Debug.Log("GameIntro");
+                DialogueSystem.onSectionEnd += GameIntro;
+            });
+
+
     }
 
     public void GameIntro()
     {
         AndriodInput.instance.EnableNextDialog(false);
         Hints.instance.Show("´M§ä¨ÃºË·Ç©x­û");
-        DialogueSystem.onSectionEnd -= GameIntro;        
+        DialogueSystem.onSectionEnd -= GameIntro;
         DialogueSystem.instance.StartDialog("TempleGameInfo");
         findGame?.Invoke();
-      
+
 
     }
 
     public void GameEnd()
     {
+        SoundPlayer.instance.PlayCorrect();
         Hints.instance.Hide();
         findGameEnd?.Invoke();
         AndriodInput.instance.EnableNextDialog(true);
@@ -104,6 +111,7 @@ public class TempleStage : MonoBehaviour
     public void StartSearchIntro()
     {
         DialogueSystem.onSectionEnd -= StartSearchIntro;
+        DialogBoxsManager.instance.HideAllDialog();
         AndriodInput.instance.EnableNextDialog(false);
         InfoStart.Invoke();
     }
